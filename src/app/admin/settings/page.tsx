@@ -35,7 +35,7 @@ export default function SettingsPage() {
       }
     };
     fetchSettings();
-  }, [setValue]);
+  }, [setValue, t]);
 
   const onSubmit = async (data: Record<string, string>) => {
     const payload = {

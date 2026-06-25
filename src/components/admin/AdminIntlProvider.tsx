@@ -45,6 +45,10 @@ export function AdminIntlProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   useEffect(() => {
+    // Loads the persisted locale's messages on mount. loadLocale awaits a
+    // dynamic import before any setState, so the updates are asynchronous —
+    // the rule's synchronous-setState heuristic is a false positive here.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     void loadLocale(getAdminLocaleFromCookie());
   }, [loadLocale]);
 

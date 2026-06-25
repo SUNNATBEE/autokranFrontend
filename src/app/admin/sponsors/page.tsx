@@ -1,33 +1,61 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
+import Image from 'next/image';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import { Plus, Edit, Trash2, X } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
+interface Sponsor {
+  id: string;
+  name: string;
+  logoUrl: string;
+  websiteUrl?: string;
+  displayOrder: number;
+}
+
+interface SponsorFormValues {
+  name: string;
+  logoUrl: string;
+  websiteUrl: string;
+  displayOrder: string;
+}
+
 export default function SponsorsPage() {
   const t = useTranslations('Admin.sponsors');
-  const [sponsors, setSponsors] = useState<any[]>([]);
+  const [sponsors, setSponsors] = useState<Sponsor[]>([]);
   const [isModalOpen, setModalOpen] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
-  const { register, handleSubmit, reset, setValue } = useForm();
+  const { register, handleSubmit, reset, setValue } =
+    useForm<SponsorFormValues>();
 
-  const fetchSponsors = async () => {
+  const fetchSponsors = useCallback(async () => {
     try {
-      const res = await axios.get('/api/admin/sponsors');
+      const res = await axios.get<Sponsor[]>('/api/admin/sponsors');
       setSponsors(res.data);
-    } catch (err) {
+    } catch {
       toast.error(t('toast.loadError'));
     }
-  };
+  }, [t]);
 
   useEffect(() => {
-    fetchSponsors();
-  }, []);
+    let active = true;
+    (async () => {
+      try {
+        const res = await axios.get<Sponsor[]>('/api/admin/sponsors');
+        if (active) setSponsors(res.data);
+      } catch {
+        if (active) toast.error(t('toast.loadError'));
+      }
+    })();
+    return () => {
+      active = false;
+    };
+  }, [t]);
 
-  const onSubmit = async (data: any) => {
+  const onSubmit = async (data: SponsorFormValues) => {
     try {
       if (editingId) {
         await axios.put(`/api/admin/sponsors/${editingId}`, data);
@@ -40,17 +68,17 @@ export default function SponsorsPage() {
       reset();
       setEditingId(null);
       fetchSponsors();
-    } catch (err) {
+    } catch {
       toast.error(t('toast.saveError'));
     }
   };
 
-  const handleEdit = (sponsor: any) => {
+  const handleEdit = (sponsor: Sponsor) => {
     setEditingId(sponsor.id);
     setValue('name', sponsor.name);
     setValue('logoUrl', sponsor.logoUrl);
-    setValue('websiteUrl', sponsor.websiteUrl);
-    setValue('displayOrder', sponsor.displayOrder);
+    setValue('websiteUrl', sponsor.websiteUrl ?? '');
+    setValue('displayOrder', String(sponsor.displayOrder));
     setModalOpen(true);
   };
 
@@ -60,7 +88,7 @@ export default function SponsorsPage() {
         await axios.delete(`/api/admin/sponsors/${id}`);
         toast.success(t('toast.deleted'));
         fetchSponsors();
-      } catch (err) {
+      } catch {
         toast.error(t('toast.deleteError'));
       }
     }
@@ -92,7 +120,13 @@ export default function SponsorsPage() {
             {sponsors.map((sponsor) => (
               <tr key={sponsor.id}>
                 <td className="px-6 py-4 whitespace-nowrap flex items-center gap-4">
-                  <img src={sponsor.logoUrl} alt={sponsor.name} className="h-10 w-10 rounded-full object-cover bg-gray-100" />
+                  <Image
+                    src={sponsor.logoUrl}
+                    alt={sponsor.name}
+                    width={40}
+                    height={40}
+                    className="h-10 w-10 rounded-full object-cover bg-gray-100"
+                  />
                   <span className="font-medium text-gray-900">{sponsor.name}</span>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-gray-500">

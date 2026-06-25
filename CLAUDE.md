@@ -157,8 +157,10 @@ Scripts: `dev`, `build` (`next build`), `start`, `lint`.
 
 ## 11. Known debt / gotchas
 
-- Admin panel pages (`src/app/admin/*`) have pre-existing lint findings
-  (`react-hooks/set-state-in-effect`, `no-explicit-any`) — non-blocking.
+- `npm run lint` is clean (0 errors/warnings). The admin pages were typed and
+  their mount effects reworked to satisfy `react-hooks/set-state-in-effect`;
+  the few legitimate external-sync effects carry a justified
+  `eslint-disable-next-line` with a rationale. Keep it green.
 - `admin-auth-config.ts` is duplicated in the backend repo — keep both in sync.
 - Don't switch `proxy.ts` back to `middleware.ts` (deprecated in Next 16).
 

@@ -1,37 +1,68 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import { Plus, Edit, Trash2, X } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
+interface Crane {
+  id: string;
+  modelName: string;
+  capacity: number;
+  boomLength: number;
+  price: string;
+  description: string;
+  images: string[];
+}
+
+interface CraneFormValues {
+  modelName: string;
+  capacity: string;
+  boomLength: string;
+  price: string;
+  description: string;
+  images: string;
+}
+
 export default function FleetPage() {
   const t = useTranslations('Admin.fleet');
-  const [cranes, setCranes] = useState<any[]>([]);
+  const [cranes, setCranes] = useState<Crane[]>([]);
   const [isModalOpen, setModalOpen] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
-  const { register, handleSubmit, reset, setValue } = useForm();
+  const { register, handleSubmit, reset, setValue } = useForm<CraneFormValues>();
 
-  const fetchCranes = async () => {
+  const fetchCranes = useCallback(async () => {
     try {
-      const res = await axios.get('/api/admin/cranes');
+      const res = await axios.get<Crane[]>('/api/admin/cranes');
       setCranes(res.data);
-    } catch (err) {
+    } catch {
       toast.error(t('toast.loadError'));
     }
-  };
+  }, [t]);
 
   useEffect(() => {
-    fetchCranes();
-  }, []);
+    let active = true;
+    (async () => {
+      try {
+        const res = await axios.get<Crane[]>('/api/admin/cranes');
+        if (active) setCranes(res.data);
+      } catch {
+        if (active) toast.error(t('toast.loadError'));
+      }
+    })();
+    return () => {
+      active = false;
+    };
+  }, [t]);
 
-  const onSubmit = async (data: any) => {
-    // Convert comma-separated images string to array if necessary, here we just assume data.images is text
+  const onSubmit = async (data: CraneFormValues) => {
     const payload = {
       ...data,
-      images: data.images ? data.images.split(',').map((u: string) => u.trim()) : [],
+      images: data.images
+        ? data.images.split(',').map((u) => u.trim()).filter(Boolean)
+        : [],
     };
 
     try {
@@ -46,19 +77,19 @@ export default function FleetPage() {
       reset();
       setEditingId(null);
       fetchCranes();
-    } catch (err) {
+    } catch {
       toast.error(t('toast.saveError'));
     }
   };
 
-  const handleEdit = (crane: any) => {
+  const handleEdit = (crane: Crane) => {
     setEditingId(crane.id);
     setValue('modelName', crane.modelName);
-    setValue('capacity', crane.capacity);
-    setValue('boomLength', crane.boomLength);
+    setValue('capacity', String(crane.capacity));
+    setValue('boomLength', String(crane.boomLength));
     setValue('price', crane.price);
     setValue('description', crane.description);
-    setValue('images', crane.images?.join(', '));
+    setValue('images', crane.images?.join(', ') ?? '');
     setModalOpen(true);
   };
 
@@ -68,7 +99,7 @@ export default function FleetPage() {
         await axios.delete(`/api/admin/cranes/${id}`);
         toast.success(t('toast.deleted'));
         fetchCranes();
-      } catch (err) {
+      } catch {
         toast.error(t('toast.deleteError'));
       }
     }

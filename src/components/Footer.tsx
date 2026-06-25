@@ -12,16 +12,14 @@ function FooterContent() {
   const adminT = useTranslations("AdminLogin");
   const navT = useTranslations("Navbar");
   const searchParams = useSearchParams();
-  const [isLoginOpen, setIsLoginOpen] = useState(false);
+  // Open the login modal when the proxy redirects here with ?admin=login.
+  // Derived from the URL at mount, so no synchronous setState effect is needed.
+  const [isLoginOpen, setIsLoginOpen] = useState(
+    () => searchParams.get("admin") === "login"
+  );
   const [displayPhone, setDisplayPhone] = useState(`+998 ${companyInfo.phoneRaw}`);
   const [displayAddress, setDisplayAddress] = useState(companyInfo.address);
   const [telegramUrl, setTelegramUrl] = useState(companyInfo.telegram);
-
-  useEffect(() => {
-    if (searchParams.get("admin") === "login") {
-      setIsLoginOpen(true);
-    }
-  }, [searchParams]);
 
   useEffect(() => {
     fetch("/api/site-settings")

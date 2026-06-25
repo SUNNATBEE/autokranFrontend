@@ -33,9 +33,12 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const [isSidebarOpen, setSidebarOpen] = useState(true);
   const [session, setSession] = useState<AdminSession | null>(null);
-  const [checking, setChecking] = useState(true);
+  // The login page renders its own UI, so it never needs the session check.
+  const [checking, setChecking] = useState(pathname !== '/admin/login');
 
   useEffect(() => {
+    if (pathname === '/admin/login') return;
+
     const verify = async () => {
       try {
         const res = await fetch('/api/admin/me');
@@ -56,11 +59,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
       }
     };
 
-    if (pathname !== '/admin/login') {
-      verify();
-    } else {
-      setChecking(false);
-    }
+    verify();
   }, [pathname, router]);
 
   if (pathname === '/admin/login') {

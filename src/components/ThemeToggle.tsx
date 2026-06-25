@@ -6,19 +6,16 @@ import { useEffect, useState } from "react";
 export const ThemeToggle = () => {
   const [theme, setTheme] = useState<"dark" | "light">("dark");
 
+  // Sync the toggle with the persisted theme on mount. Reading from
+  // localStorage (an external system) is exactly what an effect is for; the
+  // initial state update here is intentional, so the lint rule is suppressed.
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") as "dark" | "light";
-    if (savedTheme) {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "dark" || savedTheme === "light") {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setTheme(savedTheme);
       document.documentElement.setAttribute("data-theme", savedTheme);
-      if (savedTheme === "dark") {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-      }
-    } else if (window.matchMedia("(prefers-color-scheme: light)").matches) {
-      // Default to dark but respect system if needed? 
-      // User asked for dark and "yarkiy" (light).
+      document.documentElement.classList.toggle("dark", savedTheme === "dark");
     }
   }, []);
 

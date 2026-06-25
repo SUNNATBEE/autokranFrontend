@@ -53,9 +53,24 @@ export default function OrdersDashboardPage() {
     }
   }, [t]);
 
+  // Initial load. `loading` already starts true, so we fetch directly here
+  // (setState only after the await) and guard against an unmount race.
   useEffect(() => {
-    fetchOrders();
-  }, [fetchOrders]);
+    let active = true;
+    (async () => {
+      try {
+        const res = await axios.get<RentalOrder[]>('/api/admin/orders');
+        if (active) setOrders(res.data);
+      } catch {
+        if (active) toast.error(t('toast.loadError'));
+      } finally {
+        if (active) setLoading(false);
+      }
+    })();
+    return () => {
+      active = false;
+    };
+  }, [t]);
 
   const updateStatus = async (id: string, status: string) => {
     try {

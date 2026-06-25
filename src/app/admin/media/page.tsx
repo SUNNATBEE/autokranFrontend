@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
 import { Upload, Copy } from 'lucide-react';
@@ -33,7 +34,7 @@ export default function MediaCenter() {
       setUploadedUrl(res.data.url);
       toast.success(t('toast.uploadSuccess'));
       setFile(null);
-    } catch (err) {
+    } catch {
       toast.error(t('toast.uploadError'));
     } finally {
       setUploading(false);
@@ -63,7 +64,7 @@ export default function MediaCenter() {
               </label>
               <p className="pl-1">or drag and drop</p>
             </div>
-            <p className="text-xs text-gray-500 mt-2">PNG, JPG, GIF up to 10MB</p>
+            <p className="text-xs text-gray-500 mt-2">PNG, JPG, WebP, AVIF, GIF, SVG up to 5MB</p>
           </div>
           
           {file && (
@@ -85,7 +86,7 @@ export default function MediaCenter() {
         <div className="bg-green-50 border border-green-200 rounded-lg p-6">
           <h3 className="text-lg font-medium text-green-800 mb-2">Upload Successful!</h3>
           <div className="flex items-center space-x-4">
-            <img src={uploadedUrl} alt="Uploaded preview" className="h-24 w-24 object-cover rounded shadow" />
+            <Image src={uploadedUrl} alt="Uploaded preview" width={96} height={96} className="h-24 w-24 object-cover rounded shadow" />
             <div className="flex-1">
               <p className="text-sm text-green-700 mb-2">Use this URL to insert the image into your fleet or sponsor records:</p>
               <div className="flex items-center">
