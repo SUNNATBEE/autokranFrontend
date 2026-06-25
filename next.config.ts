@@ -5,7 +5,12 @@ import createNextIntlPlugin from 'next-intl/plugin';
 const withNextIntl = createNextIntlPlugin();
 
 // Backend API server URL (Express). Override via BACKEND_URL env var.
-const BACKEND_URL = process.env.BACKEND_URL || 'http://localhost:4000';
+// Strip any trailing slash(es) so the rewrite destination never produces a
+// double slash (e.g. `https://host//api/...` → backend 404).
+const BACKEND_URL = (process.env.BACKEND_URL || 'http://localhost:4000').replace(
+  /\/+$/,
+  ''
+);
 
 // Security headers applied to every response.
 const securityHeaders = [
