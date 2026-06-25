@@ -1,0 +1,71 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: dark --default, light;
+}
+
+@theme {
+  --color-brand-primary: var(--brand-primary);
+  --color-brand-dark: var(--background);
+  --color-brand-surface: var(--brand-surface);
+  --color-accent: var(--accent);
+  --color-border: var(--border);
+}
+
+:root {
+  --background: #121214;
+  --foreground: #ededed;
+  --brand-primary: #facc15;
+  --brand-surface: #1e1e21;
+  --accent: #f87171;
+  --border: rgba(255, 255, 255, 0.1);
+  --glass-bg: rgba(0, 0, 0, 0.6);
+}
+
+[data-theme='light'] {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --brand-primary: #eab308;
+  --brand-surface: #ffffff;
+  --accent: #ef4444;
+  --border: rgba(15, 23, 42, 0.1);
+  --glass-bg: rgba(255, 255, 255, 0.8);
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-inter), system-ui, -apple-system, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-montserrat), var(--font-inter), system-ui, sans-serif;
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+}
+
+@layer components {
+  .premium-card {
+    @apply bg-brand-surface border border-brand-primary/10 rounded-2xl p-6 transition-all duration-300 hover:border-brand-primary/40 hover:shadow-2xl hover:shadow-brand-primary/10 hover:-translate-y-1;
+  }
+  
+  .glass {
+    @apply backdrop-blur-xl border-b border-brand-primary/10 sticky top-0 z-50;
+    background-color: var(--glass-bg);
+  }
+  
+  .btn-primary {
+    @apply bg-brand-primary text-black font-bold px-8 py-3 rounded-full hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black hover:scale-105 active:scale-95 transition-all duration-300 shadow-lg shadow-brand-primary/20;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-primary to-orange-400;
+  }
+}
+

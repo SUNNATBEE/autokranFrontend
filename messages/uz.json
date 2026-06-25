@@ -1,0 +1,286 @@
+{
+  "Seo": {
+    "title": "AUTOKRAN.UZ — Toshkentda professional avtokran ijarasi | 30–130 tonna",
+    "description": "O'zbekiston bo'ylab professional avtokran (avtokran ijarasi) xizmatlari. 30, 50, 80 va 130 tonnalik zamonaviy avtokranlar — 24/7 xizmat, kelishilgan narxlar. Toshkent va butun respublika bo'ylab.",
+    "keywords": "avtokran, avtokran ijarasi, kran ijara, 30 tonna kran, 50 tonna kran, 80 tonna kran, 130 tonna kran, Toshkent kran xizmati, autokran uz",
+    "ogAlt": "AUTOKRAN.UZ — professional avtokran xizmatlari"
+  },
+  "Navbar": {
+    "about": "Biz haqimizda",
+    "fleet": "Kranlarimiz",
+    "partners": "Hamkorlar",
+    "call": "Bog'lanish",
+    "home": "Asosiy"
+  },
+  "Hero": {
+    "badge": "Professional Avtokran Xizmatlari",
+    "title1": "MURAKKAB",
+    "title2": "LOYIHALAR UCHUN",
+    "title3": "KUCHLI TEXNIKA",
+    "description": "O'zbekiston bo'ylab professional avtokran xizmatlari. 30 dan 130 tonnagacha bo'lgan zamonaviy avtokranlar bilan istalgan murakkablikdagi vazifalarni bajaramiz.",
+    "viewFleet": "TEXNIKALARI KO'RISH",
+    "contact": "BIZ BILAN BOG'LANING",
+    "expYears": "YILLIK TAJRIBA",
+    "service": "XIZMATDA",
+    "safety": "XAVFSIZLIK"
+  },
+  "About": {
+    "badge": "Kompaniya",
+    "featuresTitle": "NIMA UCHUN <span>AYNAN BIZNI TANLASHADI?</span>",
+    "title": "BIZ <span>HAQIMIZDA</span>",
+    "description": "Kompaniyamiz rasman 2013-yilda tashkil topgan bo'lsa-da, bu sohadagi amaliy faoliyatimiz 2007-yildan boshlangan. Yillar davomida orttirilgan boy tajriba va tinimsiz mehnat orqali biz har qanday og'irlikni yengil qilishni o'rgandik. Bugun biz shunchaki texnika ijarasi emas, balki osmono'par binolar va buyuk inshootlar qurilishida ishonchli tayanch vazifasini o'taymiz. Sizning ulkan maqsadlaringiz ro'yobga chiqishida bizning ham o'z hissamiz borligidan faxrlanamiz.",
+    "projects": "Tugallangan Loyihalar",
+    "experience": "Yillik Tajriba",
+    "features": {
+      "f1": {
+        "title": "TEZ VA SIFATLI XIZMAT",
+        "desc": "Biz har bir mijozning vaqtini qadrlaymiz. Shuning uchun texnikani kelishilgan vaqtda manziga yetib borib ishga tushamiz."
+      },
+      "f2": {
+        "title": "HAMYONBOP NARXLAR",
+        "desc": "O'rta va uzoq muddatli ijaralar uchun bizda har doim o'ziga xos chegirmalar va qulay takliflar bor."
+      },
+      "f3": {
+        "title": "TEXNIK SIFAT",
+        "desc": "Barcha kranlarimiz yangi va xalqaro xavfsizlik standartlariga to'liq javob beradi (LOKI, PPO)."
+      }
+    }
+  },
+  "Partners": {
+    "title1": "ISHONCHLI",
+    "title2": "HAMKORLAR",
+    "projectsTitle": "ISHONCHLI LOYIHALAR",
+    "subtitle": "Barchasiga sifatli xizmat ko'rsatamiz."
+  },
+  "Fleet": {
+    "title": "Sizning loyihangiz uchun",
+    "subtitle": "ENG YAXSHI TEXNIKA",
+    "description": "Bizda 30 tonnadan 130 tonnagacha bo'lgan, zamonaviy va xavfsiz avtokranlar mavjud. Barcha texnikalarimiz muntazam ravishda nazoratdan o'tkaziladi.",
+    "ton": "tonna",
+    "order": "IJARA QILISH",
+    "mainBoom": "Asosiy bum",
+    "maxBoom": "Maks. bum",
+    "rentPrice": "1 OYLIK IJARA PULI",
+    "currency": "so'm",
+    "craneDescription": "Yuk ko'tarish quvvati {ton} tonnagacha. Ishonchli va tezkor texnika.",
+    "negotiablePrice": "Narxlar kelishilgan holatda"
+  },
+  "Footer": {
+    "description": "O'zbekiston bo'ylab professional avtokran xizmatlari. Biz bilan ishonchli va xavfsiz qurilish.",
+    "links": "MA'LUMOTLAR",
+    "contact": "BOG'LANISH",
+    "quickContact": "TEZKOR BOG'LANISH",
+    "expertCall": "Mutaxassisimiz sizga 5 daqiqa ichida qo'ng'iroq qiladi.",
+    "telegram": "TELEGRAMDA YOZISH",
+    "rights": "BARCHA HUQUQLAR HIMOYA QILINGAN.",
+    "privacy": "Maxfiylik siyosati",
+    "terms": "Xizmat ko'rsatish shartlari",
+    "addressLabel": "MANZIL",
+    "phoneLabel": "TELEFON",
+    "faq": "Savol-javoblar"
+  },
+  "AdminLogin": {
+    "badge": "Admin panel",
+    "title": "Kirish",
+    "subtitle": "Buyurtma menejeri yoki sayt tahrirchisi uchun",
+    "username": "Foydalanuvchi nomi",
+    "usernamePlaceholder": "Loginni kiriting",
+    "password": "Parol",
+    "passwordPlaceholder": "Parolni kiriting",
+    "showPassword": "Parolni ko'rsatish",
+    "hidePassword": "Parolni yashirish",
+    "submit": "Kirish",
+    "submitting": "Kirilmoqda...",
+    "close": "Yopish",
+    "invalidCredentials": "Login yoki parol noto'g'ri",
+    "connectionError": "Ulanish xatosi. Qaytadan urinib ko'ring.",
+    "genericError": "Xatolik yuz berdi. Qaytadan urinib ko'ring.",
+    "footerButton": "Admin"
+  },
+  "Admin": {
+    "shell": {
+      "panelTitle": "Admin panel",
+      "loading": "Yuklanmoqda...",
+      "logout": "Chiqish",
+      "roles": {
+        "order_manager": "Buyurtma menejeri",
+        "super_admin": "Sayt tahrirchisi"
+      },
+      "nav": {
+        "orders": "Buyurtmalar",
+        "contacts": "Bog'lanish",
+        "settings": "Sayt sozlamalari",
+        "fleet": "Avtopark",
+        "sponsors": "Hamkorlar",
+        "media": "Media",
+        "overview": "Umumiy ko'rinish"
+      }
+    },
+    "orders": {
+      "badge": "Buyurtma menejeri",
+      "title": "Buyurtmalar paneli",
+      "description": "Saytdan kelgan barcha buyurtmalar avtomatik shu yerda ko'rinadi.",
+      "refresh": "Yangilash",
+      "stats": {
+        "total": "Jami buyurtmalar",
+        "new": "Yangi",
+        "inProgress": "Jarayonda"
+      },
+      "table": {
+        "customer": "Mijoz",
+        "contact": "Aloqa",
+        "location": "Manzil",
+        "crane": "Kran",
+        "date": "Sana",
+        "status": "Holat"
+      },
+      "empty": {
+        "title": "Hali buyurtmalar yo'q",
+        "description": "Saytda test buyurtma yuboring — bir necha soniyada shu yerda paydo bo'ladi."
+      },
+      "status": {
+        "new": "Yangi",
+        "contacted": "Bog'lanildi",
+        "completed": "Bajarildi",
+        "cancelled": "Bekor qilindi"
+      },
+      "toast": {
+        "loadError": "Buyurtmalarni yuklab bo'lmadi",
+        "statusUpdated": "Holat yangilandi",
+        "statusError": "Holatni yangilab bo'lmadi"
+      }
+    },
+    "contacts": {
+      "badge": "Aloqa menejeri",
+      "title": "Bog'lanish so'rovlari",
+      "description": "Saytdan kelgan barcha bog'lanish so'rovlari shu yerda ko'rinadi.",
+      "refresh": "Yangilash",
+      "stats": {
+        "total": "Jami so'rovlar",
+        "new": "Yangi",
+        "inProgress": "Bog'lanildi"
+      },
+      "table": {
+        "customer": "Mijoz",
+        "contact": "Aloqa",
+        "date": "Sana",
+        "status": "Holat"
+      },
+      "empty": {
+        "title": "Hali bog'lanish so'rovlari yo'q",
+        "description": "Saytda bog'lanish so'rovini yuboring — bir necha soniyada shu yerda paydo bo'ladi."
+      },
+      "status": {
+        "new": "Yangi",
+        "contacted": "Bog'lanildi",
+        "completed": "Tugallandi",
+        "cancelled": "Bekor qilindi"
+      },
+      "toast": {
+        "loadError": "Bog'lanish so'rovlarini yuklab bo'lmadi",
+        "statusUpdated": "Holat yangilandi",
+        "statusError": "Holatni yangilab bo'lmadi"
+      }
+    },
+    "settings": {
+      "badge": "Sayt tahrirchisi",
+      "title": "Sayt sozlamalari",
+      "description": "Ommaviy sahifada ko'rinadigan aloqa va SEO ma'lumotlarini yangilang.",
+      "contactSection": "Aloqa ma'lumotlari",
+      "phoneNumbers": "Telefon raqamlar (vergul bilan)",
+      "telegram": "Telegram havolasi",
+      "address": "Manzil",
+      "seoSection": "SEO",
+      "seoTitle": "SEO sarlavha",
+      "seoDescription": "SEO tavsif",
+      "save": "Saqlash",
+      "saving": "Saqlanmoqda...",
+      "toast": {
+        "loadError": "Sozlamalarni yuklab bo'lmadi",
+        "saveSuccess": "Sayt ma'lumotlari saqlandi",
+        "saveError": "Saqlab bo'lmadi"
+      }
+    },
+    "overview": {
+      "title": "Umumiy ko'rinish",
+      "welcomeTitle": "Admin panelga xush kelibsiz",
+      "welcomeText": "Yon menyudan sayt kontentini boshqaring: hamkorlar, kranlar avtoparki va aloqa hamda SEO sozlamalarini yangilashingiz mumkin.",
+      "loading": "Yuklanmoqda...",
+      "stats": {
+        "sponsors": "Jami hamkorlar",
+        "cranes": "Avtopark (kranlar)",
+        "settings": "Global sozlamalar",
+        "active": "Faol"
+      }
+    },
+    "fleet": {
+      "title": "Avtopark boshqaruvi",
+      "add": "Kran qo'shish",
+      "edit": "Kranni tahrirlash",
+      "model": "Model",
+      "capacity": "Yuk ko'tarish (t)",
+      "boom": "Boom (m)",
+      "price": "Narx",
+      "actions": "Amallar",
+      "deleteConfirm": "Ushbu kranni o'chirishni xohlaysizmi?",
+      "toast": {
+        "loadError": "Avtoparkni yuklab bo'lmadi",
+        "updated": "Kran yangilandi",
+        "added": "Kran qo'shildi",
+        "saveError": "Saqlab bo'lmadi",
+        "deleted": "Kran o'chirildi",
+        "deleteError": "O'chirib bo'lmadi"
+      }
+    },
+    "sponsors": {
+      "title": "Hamkorlar boshqaruvi",
+      "add": "Hamkor qo'shish",
+      "edit": "Hamkorni tahrirlash",
+      "deleteConfirm": "Ushbu hamkorni o'chirishni xohlaysizmi?",
+      "toast": {
+        "loadError": "Hamkorlarni yuklab bo'lmadi",
+        "updated": "Hamkor yangilandi",
+        "added": "Hamkor qo'shildi",
+        "saveError": "Saqlab bo'lmadi",
+        "deleted": "Hamkor o'chirildi",
+        "deleteError": "O'chirib bo'lmadi"
+      }
+    },
+    "media": {
+      "title": "Media kutubxonasi",
+      "upload": "Yuklash",
+      "uploading": "Yuklanmoqda...",
+      "toast": {
+        "uploadSuccess": "Fayl yuklandi",
+        "uploadError": "Yuklab bo'lmadi",
+        "copied": "Havola nusxalandi"
+      }
+    }
+  },
+  "Booking": {
+    "title": "Texnikani band qilish",
+    "description": "Ma'lumotlaringizni qoldiring va biz siz bilan bog'lanamiz.",
+    "nameLabel": "Ismingiz",
+    "namePlaceholder": "Alisher Toshkentov",
+    "phoneLabel": "Telefon raqamingiz",
+    "phonePlaceholder": "+998 90 123 45 67",
+    "locationLabel": "Geolokatsiya / Manzil",
+    "locationPlaceholder": "Toshkent sh., Yunusobod tumani...",
+    "submit": "YUBORISH",
+    "sending": "YUBORILMOQDA...",
+    "success": "Xabaringiz yuborildi! Tez orada siz bilan bog'lanamiz.",
+    "error": "Xatolik yuz berdi. Iltimos qaytadan urinib ko'ring."
+  },
+  "Contact": {
+    "title": "Biz bilan bog'lanish",
+    "description": "Telefon raqamingiz va ismingizni qoldiring, mutaxassisimiz siz bilan bog'lanadi.",
+    "nameLabel": "Ismingiz",
+    "namePlaceholder": "Alisher Toshkentov",
+    "phoneLabel": "Telefon raqamingiz",
+    "phonePlaceholder": "+998 90 123 45 67",
+    "submit": "YUBORISH",
+    "sending": "YUBORILMOQDA...",
+    "success": "Xabaringiz yuborildi! Tez orada siz bilan bog'lanamiz.",
+    "error": "Xatolik yuz berdi. Iltimos qaytadan urinib ko'ring."
+  }
+}

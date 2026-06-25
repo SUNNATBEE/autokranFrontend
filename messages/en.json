@@ -1,0 +1,287 @@
+{
+  "Seo": {
+    "title": "AUTOKRAN.UZ — Mobile Crane Rental in Tashkent | 30–130 tons",
+    "description": "Professional mobile crane rental services across Uzbekistan. Modern 30, 50, 80 and 130-ton cranes — 24/7 service, negotiable rates. Tashkent and nationwide.",
+    "keywords": "mobile crane rental, crane hire, 30 ton crane, 50 ton crane, 80 ton crane, 130 ton crane, crane services Tashkent, autokran uz",
+    "ogAlt": "AUTOKRAN.UZ — professional mobile crane services"
+  },
+  "Navbar": {
+    "about": "About Us",
+    "fleet": "Our Fleet",
+    "partners": "Partners",
+    "call": "Call Us",
+    "home": "Home"
+  },
+  "Hero": {
+    "badge": "Professional Crane Services",
+    "title1": "POWERFUL",
+    "title2": "EQUIPMENT FOR",
+    "title3": "COMPLEX PROJECTS",
+    "description": "Professional mobile crane services across Uzbekistan. We perform tasks of any complexity with modern mobile cranes from 30 to 130 tons.",
+    "viewFleet": "VIEW FLEET",
+    "contact": "CONTACT US",
+    "expYears": "YEARS EXPERIENCE",
+    "service": "SERVICE",
+    "safety": "SAFETY"
+  },
+  "About": {
+    "badge": "Company",
+    "featuresTitle": "WHY <span>CHOOSE US?</span>",
+    "title": "ABOUT <span>US</span>",
+    "description": "Although our company was officially established in 2013, our practical operations in this field began back in 2007. Through years of rich experience and relentless work, we have learned to make any heavy load feel light. Today, we don't just rent out equipment; we serve as a reliable foundation in the construction of skyscrapers and great structures. We take pride in contributing to the realization of your grandest goals.",
+    "projects": "Completed Projects",
+    "experience": "Years Experience",
+    "features": {
+      "f1": {
+        "title": "FAST & QUALITY SERVICE",
+        "desc": "We value every customer's time. Therefore, we deliver the equipment at the agreed time."
+      },
+      "f2": {
+        "title": "AFFORDABLE PRICES",
+        "desc": "For medium and long-term rentals, we always have special discounts and favorable offers."
+      },
+      "f3": {
+        "title": "TECHNICAL QUALITY",
+        "desc": "All our cranes are new and fully meet international safety standards (LOKI, PPO)."
+      }
+    }
+  },
+  "Partners": {
+    "title1": "UNIFIED",
+    "title2": "ORBIT OF TRUST",
+    "projectsTitle": "SKY-BOUND ACHIEVEMENTS",
+    "subtitle": "Weightless precision. Massive structures effortlessly lifted into the sky, defying physics with ascending excellence."
+  },
+  "Fleet": {
+    "title": "For your project",
+    "subtitle": "BEST EQUIPMENT",
+    "description": "We have modern and safe mobile cranes with lifting capacity from 30 to 130 tons. All our equipment undergoes regular inspection.",
+    "ton": "tons",
+    "order": "RENT NOW",
+    "mainBoom": "Main boom",
+    "maxBoom": "Max. boom",
+    "rentPrice": "MONTHLY RENT PRICE",
+    "currency": "sum",
+    "craneDescription": "Lifting capacity up to {ton} tons. Reliable and fast equipment.",
+    "negotiablePrice": "Prices are negotiable"
+  },
+  "Footer": {
+    "description": "Professional crane services across Uzbekistan. Reliable and safe construction with us.",
+    "links": "INFORMATION",
+    "contact": "CONTACT",
+    "quickContact": "QUICK CONTACT",
+    "expertCall": "Our specialist will call you back within 5 minutes.",
+    "telegram": "WRITE IN TELEGRAM",
+    "rights": "ALL RIGHTS RESERVED.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "addressLabel": "ADDRESS",
+    "phoneLabel": "PHONE",
+    "faq": "FAQ"
+  },
+  "AdminLogin": {
+    "badge": "Admin Panel",
+    "title": "Sign in",
+    "subtitle": "Order manager or site editor access",
+    "username": "Username",
+    "usernamePlaceholder": "Enter username",
+    "password": "Password",
+    "passwordPlaceholder": "Enter password",
+    "showPassword": "Show password",
+    "hidePassword": "Hide password",
+    "submit": "Sign in",
+    "submitting": "Signing in...",
+    "close": "Close",
+    "invalidCredentials": "Invalid username or password",
+    "connectionError": "Connection error. Please try again.",
+    "genericError": "Something went wrong. Please try again.",
+    "footerButton": "Admin"
+  },
+  "Admin": {
+    "shell": {
+      "panelTitle": "Admin Panel",
+      "loading": "Loading admin...",
+      "logout": "Logout",
+      "roles": {
+        "order_manager": "Order Manager",
+        "super_admin": "Site Editor"
+      },
+      "nav": {
+        "orders": "Orders",
+        "contacts": "Contacts",
+        "settings": "Site Settings",
+        "fleet": "Fleet",
+        "sponsors": "Sponsors",
+        "media": "Media",
+        "overview": "Overview"
+      }
+    },
+    "orders": {
+      "badge": "Order Manager",
+      "title": "Orders Dashboard",
+      "description": "Every booking from the website appears here automatically.",
+      "refresh": "Refresh",
+      "stats": {
+        "total": "Total orders",
+        "new": "New",
+        "inProgress": "In progress"
+      },
+      "table": {
+        "customer": "Customer",
+        "contact": "Contact",
+        "location": "Location",
+        "crane": "Crane",
+        "date": "Date",
+        "status": "Status"
+      },
+      "empty": {
+        "title": "No orders yet",
+        "description": "Submit a test booking on the main site — it will show up here within seconds."
+      },
+      "status": {
+        "new": "New",
+        "contacted": "Contacted",
+        "completed": "Completed",
+        "cancelled": "Cancelled"
+      },
+      "toast": {
+        "loadError": "Failed to load orders",
+        "statusUpdated": "Status updated",
+        "statusError": "Failed to update status"
+      }
+    },
+    "contacts": {
+      "badge": "Contact Manager",
+      "title": "Contact Requests",
+      "description": "All contact requests from the website appear here.",
+      "refresh": "Refresh",
+      "stats": {
+        "total": "Total requests",
+        "new": "New",
+        "inProgress": "Contacted"
+      },
+      "table": {
+        "customer": "Client",
+        "contact": "Contact",
+        "date": "Date",
+        "status": "Status"
+      },
+      "empty": {
+        "title": "No contact requests yet",
+        "description": "Send a contact request from the home page — it will show up here within seconds."
+      },
+      "status": {
+        "new": "New",
+        "contacted": "Contacted",
+        "completed": "Completed",
+        "cancelled": "Cancelled"
+      },
+      "toast": {
+        "loadError": "Failed to load contact requests",
+        "statusUpdated": "Status updated",
+        "statusError": "Failed to update status"
+      }
+    },
+    "settings": {
+      "badge": "Site Editor",
+      "title": "Site Settings",
+      "description": "Update contact details and SEO shown on the public landing page.",
+      "contactSection": "Contact Information",
+      "phoneNumbers": "Phone numbers (comma separated)",
+      "telegram": "Telegram link",
+      "address": "Address",
+      "seoSection": "SEO",
+      "seoTitle": "SEO title",
+      "seoDescription": "SEO description",
+      "save": "Save changes",
+      "saving": "Saving...",
+      "toast": {
+        "loadError": "Failed to load settings",
+        "saveSuccess": "Site content saved successfully",
+        "saveError": "Failed to save settings"
+      }
+    },
+    "overview": {
+      "title": "Overview",
+      "welcomeTitle": "Welcome to Admin Panel",
+      "welcomeText": "Use the sidebar navigation to manage your website content. You can add or remove sponsors, update your fleet of cranes, and configure global website settings such as contact information and SEO details.",
+      "loading": "Loading dashboard...",
+      "stats": {
+        "sponsors": "Total Sponsors",
+        "cranes": "Fleet Size (Cranes)",
+        "settings": "Global Settings",
+        "active": "Active"
+      }
+    },
+    "fleet": {
+      "title": "Fleet Management",
+      "add": "Add Crane",
+      "edit": "Edit Crane",
+      "model": "Model",
+      "capacity": "Capacity (t)",
+      "boom": "Boom (m)",
+      "price": "Price",
+      "actions": "Actions",
+      "deleteConfirm": "Are you sure you want to delete this crane?",
+      "toast": {
+        "loadError": "Failed to load fleet",
+        "updated": "Crane updated",
+        "added": "Crane added",
+        "saveError": "Failed to save crane",
+        "deleted": "Crane deleted",
+        "deleteError": "Failed to delete crane"
+      }
+    },
+    "sponsors": {
+      "title": "Sponsors Management",
+      "add": "Add Sponsor",
+      "edit": "Edit Sponsor",
+      "deleteConfirm": "Are you sure you want to delete this sponsor?",
+      "toast": {
+        "loadError": "Failed to load sponsors",
+        "updated": "Sponsor updated",
+        "added": "Sponsor added",
+        "saveError": "Failed to save sponsor",
+        "deleted": "Sponsor deleted",
+        "deleteError": "Failed to delete sponsor"
+      }
+    },
+    "media": {
+      "title": "Media Library",
+      "upload": "Upload",
+      "uploading": "Uploading...",
+      "toast": {
+        "uploadSuccess": "File uploaded successfully",
+        "uploadError": "Failed to upload file",
+        "copied": "URL copied to clipboard"
+      }
+    }
+  },
+  "Booking": {
+    "title": "Book Equipment",
+    "description": "Leave your details and we will get back to help you.",
+    "nameLabel": "Your Name",
+    "namePlaceholder": "John Doe",
+    "phoneLabel": "Phone Number",
+    "phonePlaceholder": "+998 90 123 45 67",
+    "locationLabel": "Geolocation / Address",
+    "locationPlaceholder": "Tashkent city, Yunusobod district...",
+    "submit": "SUBMIT",
+    "sending": "SENDING...",
+    "success": "Your details have been sent successfully!",
+    "error": "An error occurred. Please try again."
+  },
+  "Contact": {
+    "title": "Contact Us",
+    "description": "Leave your name and phone number, and our specialist will contact you.",
+    "nameLabel": "Your Name",
+    "namePlaceholder": "John Doe",
+    "phoneLabel": "Phone Number",
+    "phonePlaceholder": "+998 90 123 45 67",
+    "submit": "SUBMIT",
+    "sending": "SENDING...",
+    "success": "Your request has been submitted! We will contact you soon.",
+    "error": "Something went wrong. Please try again."
+  }
+}
+
