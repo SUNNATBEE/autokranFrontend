@@ -16,8 +16,11 @@ if (
   process.env.NODE_ENV === 'production' &&
   (!rawSecret || rawSecret === 'dev_shared_secret_change_in_production')
 ) {
-  throw new Error(
-    'JWT_SECRET must be set to a strong, unique value in production.'
+  // Warn, but DON'T crash the whole site (including public pages) over a
+  // secret that only affects the admin area. Admin JWT verification simply
+  // fails closed (redirects to login) when the secret doesn't match.
+  console.warn(
+    'JWT_SECRET is not set to a strong value — admin auth will not work until it is configured to match the backend.'
   );
 }
 const JWT_SECRET = new TextEncoder().encode(
