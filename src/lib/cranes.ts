@@ -68,6 +68,8 @@ export async function fetchPublicCranes(): Promise<FleetCrane[]> {
   );
   try {
     const res = await fetch(`${base}/api/cranes`, {
+      // 60s ISR fallback; the admin also purges this on demand via /revalidate
+      // (revalidatePath) so edits appear on the site immediately.
       next: { revalidate: 60 },
     });
     if (res.ok) {

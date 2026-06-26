@@ -87,6 +87,10 @@ export default function FleetPage() {
     fetchCranes();
   }, [fetchCranes]);
 
+  // Purge the public fleet cache so edits show on the site immediately.
+  const revalidatePublic = () =>
+    fetch("/revalidate", { method: "POST" }).catch(() => {});
+
   const set = <K extends keyof CraneForm>(key: K, value: CraneForm[K]) =>
     setForm((f) => ({ ...f, [key]: value }));
 
@@ -154,6 +158,7 @@ export default function FleetPage() {
       setModalOpen(false);
       setEditingId(null);
       fetchCranes();
+      revalidatePublic();
     } catch {
       toast.error(t('toast.saveError'));
     } finally {
@@ -173,6 +178,7 @@ export default function FleetPage() {
         available: !crane.available,
       });
       toast.success(t('toast.statusUpdated'));
+      revalidatePublic();
     } catch {
       toast.error(t('toast.saveError'));
       fetchCranes();
@@ -185,6 +191,7 @@ export default function FleetPage() {
       await axios.delete(`/api/admin/cranes/${id}`);
       toast.success(t('toast.deleted'));
       fetchCranes();
+      revalidatePublic();
     } catch {
       toast.error(t('toast.deleteError'));
     }
