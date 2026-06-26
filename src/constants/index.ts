@@ -198,6 +198,8 @@ export const companyInfo = {
   founded: 2011,
   phone: "+998 95 380 24 42",
   phoneRaw: "953802442",
+  // WhatsApp number in international format (no +, no spaces) for wa.me links.
+  whatsapp: "998953802442",
   address: "Uchtepa tumani, Toshkent shahri",
   telegram: "https://t.me/autokran_uz",
   instagram: "https://instagram.com/autokran.uz",
@@ -205,14 +207,42 @@ export const companyInfo = {
   description: "O'zbekiston bo'ylab professional avtokran xizmatlari. 30 dan 130 tonnagacha bo'lgan zamonaviy avtokranlar bilan istalgan murakkablikdagi vazifalarni bajaramiz.",
 };
 
+/**
+ * Completed-project showcase. Images currently reuse equipment photos as
+ * tasteful backgrounds — REPLACE `image` with real on-site project photos
+ * (place them in `public/images/`) for maximum credibility.
+ */
+export const projectShowcase = [
+  { name: "GTL zavodi", image: "/images/ZOOMLION-ZTC130.avif" },
+  { name: "Tashkent City", image: "/images/XCMG-QY50KA.jpg" },
+  { name: "Seul Moon", image: "/images/zoomlion_80t_new.jpg" },
+  { name: "Mega Planet", image: "/images/sany-stc500.jpg" },
+  { name: "Nestone", image: "/images/XCMG-30K5-I.jpeg" },
+  { name: "Dvores Forum", image: "/images/hero-bg.avif" },
+];
+
 /** Canonical, env-overridable production URL (no trailing slash). */
 export const SITE_URL = (
   process.env.NEXT_PUBLIC_SITE_URL || "https://autokran.uz"
 ).replace(/\/$/, "");
 
+/**
+ * Search-engine ownership-verification tokens.
+ * Paste the codes Google Search Console / Yandex Webmaster / Bing give you into
+ * these env vars on Vercel (Production) and redeploy. Leaving one empty simply
+ * omits its <meta> tag — no error.
+ */
+export const verification = {
+  google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || "",
+  yandex: process.env.NEXT_PUBLIC_YANDEX_VERIFICATION || "",
+  bing: process.env.NEXT_PUBLIC_BING_VERIFICATION || "",
+};
+
 export const siteConfig = {
   url: SITE_URL,
-  ogImage: `${SITE_URL}/images/hero-bg.avif`,
+  // Use a JPG/PNG (1200×630) for OG — social/search crawlers (Telegram,
+  // Facebook, Google) don't reliably render AVIF preview images.
+  ogImage: `${SITE_URL}/images/og-cover.jpg`,
   locales: ["uz", "ru", "en"] as const,
   defaultLocale: "uz" as const,
   // Approximate coordinates for Tashkent (used in LocalBusiness schema).

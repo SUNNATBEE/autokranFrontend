@@ -2,13 +2,16 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { craneData } from "@/constants";
 import { MoveRight, CheckCircle } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { BookingModal } from "../BookingModal";
+import type { FleetCrane } from "@/lib/cranes";
+import { discountedPrice } from "@/lib/cranes";
 
-export const Fleet = () => {
+const priceFmt = new Intl.NumberFormat("ru-RU"); // 60 000 000
+
+export const Fleet = ({ cranes }: { cranes: FleetCrane[] }) => {
   const t = useTranslations("Fleet");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCrane, setSelectedCrane] = useState<string | undefined>(undefined);
@@ -46,7 +49,10 @@ export const Fleet = () => {
 
         {/* CSS Grid for fluid card layout: 1 col on mobile, 2 on tablet, 3 on desktop */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {craneData.map((crane, idx) => (
+          {cranes.map((crane, idx) => {
+            const finalPrice = discountedPrice(crane);
+            const hasDiscount = crane.discountPercent > 0 && crane.pricePerMonth != null;
+            return (
             <motion.div
               key={crane.id}
               initial={{ opacity: 0, scale: 0.95 }}
@@ -58,13 +64,18 @@ export const Fleet = () => {
               <div className="relative h-64 -mx-6 -mt-6 mb-6 overflow-hidden rounded-t-2xl">
                  <Image
                     src={crane.image}
-                    alt={`${crane.brand} ${crane.model} — ${crane.tonnage} ${t('ton')} avtokran`}
+                    alt={`${crane.brand ?? ""} ${crane.model} — ${crane.tonnage} ${t('ton')} avtokran`}
                     fill
                     loading={idx < 3 ? undefined : "lazy"}
                     priority={idx < 3}
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="object-cover transition-transform duration-700 group-hover:scale-110"
                  />
+                 {hasDiscount && (
+                   <div className="absolute top-4 left-4 bg-red-600 text-white px-3 py-1.5 rounded-full font-black text-sm shadow-xl z-10">
+                     -{crane.discountPercent}%
+                   </div>
+                 )}
                  <div className="absolute top-4 right-4 bg-brand-primary text-black px-4 py-1.5 rounded-full font-black text-sm shadow-xl z-10">
                    {crane.tonnage} {t('ton').toUpperCase()}
                  </div>
@@ -82,18 +93,38 @@ export const Fleet = () => {
                   <span className="flex items-center gap-2"><CheckCircle size={16} className="text-brand-primary" /> {t('mainBoom')}</span>
                   <span className="font-bold text-foreground">{crane.mainBoom}m</span>
                 </div>
-                <div className="flex justify-between items-center text-foreground/80">
-                   <span className="flex items-center gap-2"><CheckCircle size={16} className="text-brand-primary" /> {t('maxBoom')}</span>
-                   <span className="font-bold text-foreground">{crane.auxBoom}m</span>
-                </div>
+                {crane.auxBoom != null && (
+                  <div className="flex justify-between items-center text-foreground/80">
+                     <span className="flex items-center gap-2"><CheckCircle size={16} className="text-brand-primary" /> {t('maxBoom')}</span>
+                     <span className="font-bold text-foreground">{crane.auxBoom}m</span>
+                  </div>
+                )}
               </div>
 
               <div className="flex flex-col gap-4">
-                 <div className="text-center py-2 bg-brand-surface rounded-xl border border-brand-primary/10">
-                    <span className="text-sm font-bold text-brand-primary">{t('negotiablePrice')}</span>
+                 <div className="py-3 px-4 bg-brand-surface rounded-xl border border-brand-primary/10">
+                   {finalPrice != null ? (
+                     <div className="flex flex-col items-center text-center">
+                       <span className="text-[10px] font-bold uppercase tracking-widest text-foreground/40 mb-0.5">
+                         {t('rentPrice')}
+                       </span>
+                       {hasDiscount && (
+                         <span className="text-xs text-foreground/40 line-through">
+                           {priceFmt.format(crane.pricePerMonth!)} {t('currency')}
+                         </span>
+                       )}
+                       <span className="text-lg font-black text-brand-primary leading-tight">
+                         {priceFmt.format(finalPrice)} {t('currency')}
+                       </span>
+                     </div>
+                   ) : (
+                     <div className="text-center">
+                       <span className="text-sm font-bold text-brand-primary">{t('negotiablePrice')}</span>
+                     </div>
+                   )}
                  </div>
-                 
-                  <button 
+
+                  <button
                      onClick={() => handleBook(crane.model)}
                      className="flex items-center justify-center gap-3 bg-brand-primary hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black text-black p-4 rounded-xl font-black transition-all group/btn shadow-lg shadow-brand-primary/10 w-full"
                   >
@@ -102,7 +133,8 @@ export const Fleet = () => {
                   </button>
                </div>
             </motion.div>
-          ))}
+            );
+          })}
         </div>
         
         <BookingModal 

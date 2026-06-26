@@ -108,7 +108,7 @@ function FooterContent() {
                 </li>
                 <li>
                   <a
-                    href="#"
+                    href="#faq"
                     className="text-foreground/60 hover:text-brand-primary transition-colors"
                   >
                     {t("faq")}

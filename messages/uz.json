@@ -10,7 +10,10 @@
     "fleet": "Kranlarimiz",
     "partners": "Hamkorlar",
     "call": "Bog'lanish",
-    "home": "Asosiy"
+    "home": "Asosiy",
+    "projects": "Loyihalar",
+    "faq": "Savollar",
+    "calculator": "Narx hisoblash"
   },
   "Hero": {
     "badge": "Professional Avtokran Xizmatlari",
@@ -63,7 +66,9 @@
     "rentPrice": "1 OYLIK IJARA PULI",
     "currency": "so'm",
     "craneDescription": "Yuk ko'tarish quvvati {ton} tonnagacha. Ishonchli va tezkor texnika.",
-    "negotiablePrice": "Narxlar kelishilgan holatda"
+    "negotiablePrice": "Narxlar kelishilgan holatda",
+    "discount": "CHEGIRMA",
+    "from": "dan"
   },
   "Footer": {
     "description": "O'zbekiston bo'ylab professional avtokran xizmatlari. Biz bilan ishonchli va xavfsiz qurilish.",
@@ -211,7 +216,25 @@
         "cranes": "Avtopark (kranlar)",
         "settings": "Global sozlamalar",
         "active": "Faol"
-      }
+      },
+      "leads": "Murojaatlar",
+      "thisWeek": "Shu hafta",
+      "visitors": "Tashriflar (14 kun)",
+      "availableCranes": "Faol kranlar",
+      "totalCranes": "Jami kranlar",
+      "ordersByStatus": "Buyurtmalar holati",
+      "recentLeads": "So‘nggi murojaatlar",
+      "colName": "Ism",
+      "colPhone": "Telefon",
+      "colLocation": "Manzil",
+      "colCrane": "Kran",
+      "colStatus": "Holat",
+      "colDate": "Sana",
+      "noLeads": "Hozircha murojaat yo‘q",
+      "visitorsTotal": "Jami ko‘rishlar",
+      "analyticsNote": "To‘liq tahlil Vercel Analytics panelida",
+      "newContacts": "Yangi aloqalar",
+      "error": "Ma‘lumotni yuklab bo‘lmadi"
     },
     "fleet": {
       "title": "Avtopark boshqaruvi",
@@ -229,8 +252,30 @@
         "added": "Kran qo'shildi",
         "saveError": "Saqlab bo'lmadi",
         "deleted": "Kran o'chirildi",
-        "deleteError": "O'chirib bo'lmadi"
-      }
+        "deleteError": "O'chirib bo'lmadi",
+        "uploaded": "Rasm yuklandi",
+        "uploadError": "Rasmni yuklab bo‘lmadi",
+        "statusUpdated": "Holat yangilandi"
+      },
+      "brand": "Brend",
+      "auxBoom": "Maks. bum (m)",
+      "pricePerMonth": "Oylik narx (so'm)",
+      "discount": "Chegirma (%)",
+      "availableCol": "Holat",
+      "image": "Rasm",
+      "available": "Saytda faol",
+      "hidden": "Yashirilgan",
+      "show": "Ko‘rsatish",
+      "hide": "Yashirish",
+      "uploadImage": "Rasm yuklash",
+      "uploading": "Yuklanmoqda...",
+      "dropImage": "Rasmni tanlang yoki bu yerga tashlang",
+      "imageHint": "JPG, PNG, WebP — 5 MB gacha",
+      "save": "Saqlash",
+      "cancel": "Bekor qilish",
+      "description": "Tavsif",
+      "noCranes": "Kranlar topilmadi",
+      "searchPlaceholder": "Qidirish..."
     },
     "sponsors": {
       "title": "Hamkorlar boshqaruvi",
@@ -282,5 +327,83 @@
     "sending": "YUBORILMOQDA...",
     "success": "Xabaringiz yuborildi! Tez orada siz bilan bog'lanamiz.",
     "error": "Xatolik yuz berdi. Iltimos qaytadan urinib ko'ring."
+  },
+  "Floating": {
+    "whatsapp": "WhatsApp",
+    "call": "Qo'ng'iroq",
+    "telegram": "Telegram",
+    "label": "Bog'lanish"
+  },
+  "Calculator": {
+    "title": "Narxni hisoblang",
+    "subtitle": "Taxminiy ijara narxini bir necha soniyada biling",
+    "tonnageLabel": "Kran tonnaji",
+    "daysLabel": "Ijara muddati (kun)",
+    "estimateLabel": "Taxminiy narx",
+    "estimateNote": "* Bu taxminiy hisob. Aniq narx ish hajmi, manzil va muddatga qarab kelishiladi.",
+    "orderNow": "Buyurtma berish",
+    "perDay": "kun",
+    "selectCrane": "Tonnajni tanlang",
+    "currency": "so'm",
+    "ton": "tonna"
+  },
+  "Projects": {
+    "title": "Bizning ishlarimiz",
+    "subtitle": "Yiriklarning ishonchi",
+    "experience": "yil tajriba",
+    "cranesLabel": "avtokran",
+    "projectsLabel": "yirik loyiha",
+    "serviceLabel": "xizmat"
+  },
+  "Reviews": {
+    "title": "Mijozlar fikri",
+    "subtitle": "Bizga ishonganlar",
+    "items": [
+      {
+        "name": "Aziz Karimov",
+        "company": "Discover Invest",
+        "text": "Avtokranni o'z vaqtida yetkazib berishdi, operatorlar professional. Hamkorlikdan juda mamnunmiz."
+      },
+      {
+        "name": "Sardor Yusupov",
+        "company": "Neft Gaz Montaj",
+        "text": "Yirik loyihada 80 tonnalik kran zarur edi — tez va ishonchli xizmat ko'rsatishdi. Tavsiya qilaman."
+      },
+      {
+        "name": "Jamshid Toshev",
+        "company": "Tashkent City",
+        "text": "Narxlari kelishilgan, texnikasi zamonaviy. 24/7 bog'lanish imkoni juda qulay."
+      }
+    ]
+  },
+  "Faq": {
+    "title": "Ko'p so'raladigan savollar",
+    "subtitle": "Savollaringizga javoblar",
+    "items": [
+      {
+        "q": "Avtokran ijarasi narxi qancha?",
+        "a": "Narx kran tonnaji, ijara muddati va manzilga bog'liq. Aniq narx uchun biz bilan bog'laning yoki yuqoridagi kalkulyatordan foydalaning."
+      },
+      {
+        "q": "Qaysi hududlarda xizmat ko‘rsatasiz?",
+        "a": "Toshkent shahri va butun O'zbekiston bo'ylab xizmat ko'rsatamiz."
+      },
+      {
+        "q": "Avtokran operator bilan beriladimi?",
+        "a": "Ha, barcha avtokranlar tajribali va sertifikatlangan operatorlar bilan beriladi."
+      },
+      {
+        "q": "Minimal ijara muddati qancha?",
+        "a": "Bir kunlik ijaradan uzoq muddatli shartnomagacha imkoniyat mavjud."
+      },
+      {
+        "q": "Qancha tez yetkazib berasiz?",
+        "a": "Buyurtma asosida texnikani imkon qadar tez, ko'p hollarda o'sha kuni yetkazamiz."
+      },
+      {
+        "q": "To‘lov qanday amalga oshiriladi?",
+        "a": "Naqd va bank o'tkazmasi orqali. Yuridik shaxslar uchun rasmiy shartnoma tuziladi."
+      }
+    ]
   }
 }

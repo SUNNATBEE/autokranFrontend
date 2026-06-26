@@ -10,7 +10,10 @@
     "fleet": "Our Fleet",
     "partners": "Partners",
     "call": "Call Us",
-    "home": "Home"
+    "home": "Home",
+    "projects": "Projects",
+    "faq": "FAQ",
+    "calculator": "Price"
   },
   "Hero": {
     "badge": "Professional Crane Services",
@@ -63,7 +66,9 @@
     "rentPrice": "MONTHLY RENT PRICE",
     "currency": "sum",
     "craneDescription": "Lifting capacity up to {ton} tons. Reliable and fast equipment.",
-    "negotiablePrice": "Prices are negotiable"
+    "negotiablePrice": "Prices are negotiable",
+    "discount": "DISCOUNT",
+    "from": "from"
   },
   "Footer": {
     "description": "Professional crane services across Uzbekistan. Reliable and safe construction with us.",
@@ -211,7 +216,25 @@
         "cranes": "Fleet Size (Cranes)",
         "settings": "Global Settings",
         "active": "Active"
-      }
+      },
+      "leads": "Leads",
+      "thisWeek": "This week",
+      "visitors": "Visits (14d)",
+      "availableCranes": "Active cranes",
+      "totalCranes": "Total cranes",
+      "ordersByStatus": "Orders by status",
+      "recentLeads": "Recent leads",
+      "colName": "Name",
+      "colPhone": "Phone",
+      "colLocation": "Location",
+      "colCrane": "Crane",
+      "colStatus": "Status",
+      "colDate": "Date",
+      "noLeads": "No leads yet",
+      "visitorsTotal": "Total views",
+      "analyticsNote": "Full analytics in the Vercel Analytics panel",
+      "newContacts": "New contacts",
+      "error": "Failed to load data"
     },
     "fleet": {
       "title": "Fleet Management",
@@ -229,8 +252,30 @@
         "added": "Crane added",
         "saveError": "Failed to save crane",
         "deleted": "Crane deleted",
-        "deleteError": "Failed to delete crane"
-      }
+        "deleteError": "Failed to delete crane",
+        "uploaded": "Image uploaded",
+        "uploadError": "Failed to upload image",
+        "statusUpdated": "Status updated"
+      },
+      "brand": "Brand",
+      "auxBoom": "Max boom (m)",
+      "pricePerMonth": "Monthly price (UZS)",
+      "discount": "Discount (%)",
+      "availableCol": "Status",
+      "image": "Image",
+      "available": "Visible on site",
+      "hidden": "Hidden",
+      "show": "Show",
+      "hide": "Hide",
+      "uploadImage": "Upload image",
+      "uploading": "Uploading...",
+      "dropImage": "Choose or drop an image here",
+      "imageHint": "JPG, PNG, WebP — up to 5 MB",
+      "save": "Save",
+      "cancel": "Cancel",
+      "description": "Description",
+      "noCranes": "No cranes found",
+      "searchPlaceholder": "Search..."
     },
     "sponsors": {
       "title": "Sponsors Management",
@@ -282,6 +327,83 @@
     "sending": "SENDING...",
     "success": "Your request has been submitted! We will contact you soon.",
     "error": "Something went wrong. Please try again."
+  },
+  "Floating": {
+    "whatsapp": "WhatsApp",
+    "call": "Call",
+    "telegram": "Telegram",
+    "label": "Contact"
+  },
+  "Calculator": {
+    "title": "Calculate the price",
+    "subtitle": "Get an estimated rental price in seconds",
+    "tonnageLabel": "Crane tonnage",
+    "daysLabel": "Rental period (days)",
+    "estimateLabel": "Estimated price",
+    "estimateNote": "* This is an estimate. The exact price is agreed based on scope, location and duration.",
+    "orderNow": "Place an order",
+    "perDay": "days",
+    "selectCrane": "Select tonnage",
+    "currency": "UZS",
+    "ton": "tons"
+  },
+  "Projects": {
+    "title": "Our work",
+    "subtitle": "Trusted by the largest",
+    "experience": "years of experience",
+    "cranesLabel": "cranes",
+    "projectsLabel": "major projects",
+    "serviceLabel": "service"
+  },
+  "Reviews": {
+    "title": "Client reviews",
+    "subtitle": "Those who trust us",
+    "items": [
+      {
+        "name": "Aziz Karimov",
+        "company": "Discover Invest",
+        "text": "The crane arrived on time and the operators were professional. Very happy with the cooperation."
+      },
+      {
+        "name": "Sardor Yusupov",
+        "company": "Neft Gaz Montaj",
+        "text": "We needed an 80-ton crane for a large project — fast and reliable service. Highly recommend."
+      },
+      {
+        "name": "Jamshid Toshev",
+        "company": "Tashkent City",
+        "text": "Negotiable prices, modern equipment. 24/7 availability is very convenient."
+      }
+    ]
+  },
+  "Faq": {
+    "title": "Frequently asked questions",
+    "subtitle": "Answers to your questions",
+    "items": [
+      {
+        "q": "How much does crane rental cost?",
+        "a": "The price depends on crane tonnage, rental period and location. For an exact price contact us or use the calculator above."
+      },
+      {
+        "q": "Which regions do you serve?",
+        "a": "We operate in Tashkent and across all of Uzbekistan."
+      },
+      {
+        "q": "Is the crane provided with an operator?",
+        "a": "Yes, all cranes come with experienced, certified operators."
+      },
+      {
+        "q": "What is the minimum rental period?",
+        "a": "From a single day up to long-term contracts."
+      },
+      {
+        "q": "How fast do you deliver?",
+        "a": "We deliver as fast as possible on request, often the same day."
+      },
+      {
+        "q": "How is payment made?",
+        "a": "Cash and bank transfer. Official contracts are signed for legal entities."
+      }
+    ]
   }
 }
-

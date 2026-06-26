@@ -1,11 +1,13 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Montserrat } from "next/font/google";
 import "../globals.css";
-import { siteConfig, companyInfo } from "@/constants";
+import { siteConfig, companyInfo, verification } from "@/constants";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
+import { Analytics } from "@vercel/analytics/next";
+import { VisitTracker } from "@/components/VisitTracker";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -109,6 +111,15 @@ export async function generateMetadata({
       icon: [{ url: "/favicon.svg", type: "image/svg+xml" }, { url: "/favicon.ico" }],
       shortcut: "/favicon.ico",
     },
+    // Ownership verification for Search Console / Webmaster (set via env).
+    // Empty values are omitted automatically.
+    verification: {
+      ...(verification.google ? { google: verification.google } : {}),
+      ...(verification.yandex ? { yandex: verification.yandex } : {}),
+      ...(verification.bing
+        ? { other: { "msvalidate.01": verification.bing } }
+        : {}),
+    },
     formatDetection: { telephone: true, address: true },
   };
 }
@@ -144,6 +155,8 @@ export default async function RootLayout({
         <NextIntlClientProvider messages={messages}>
           {children}
         </NextIntlClientProvider>
+        <VisitTracker />
+        <Analytics />
       </body>
     </html>
   );
