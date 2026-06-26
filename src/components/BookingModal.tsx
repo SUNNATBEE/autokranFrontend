@@ -1,9 +1,25 @@
 "use client";
 
 import { useState } from "react";
+import dynamic from "next/dynamic";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Send, Phone, User, MapPin, CheckCircle, AlertCircle } from "lucide-react";
+import { X, Send, User, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { PhoneInput } from "./PhoneInput";
+import type { LocationValue } from "./LocationPicker";
+
+// Leaflet is browser-only and heavy — load it lazily when the modal opens.
+const LocationPicker = dynamic(
+  () => import("./LocationPicker").then((m) => m.LocationPicker),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="h-52 w-full rounded-2xl bg-foreground/5 flex items-center justify-center">
+        <Loader2 className="animate-spin text-brand-primary" />
+      </div>
+    ),
+  }
+);
 
 interface BookingModalProps {
   isOpen: boolean;
@@ -13,32 +29,48 @@ interface BookingModalProps {
 
 export const BookingModal = ({ isOpen, onClose, craneModel }: BookingModalProps) => {
   const t = useTranslations("Booking");
-  const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    location: "",
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [phoneValid, setPhoneValid] = useState(false);
+  const [location, setLocation] = useState<LocationValue>({
+    address: "",
+    lat: null,
+    lng: null,
   });
+  const [submitted, setSubmitted] = useState(false);
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+
+  const reset = () => {
+    setName("");
+    setPhone("");
+    setPhoneValid(false);
+    setLocation({ address: "", lat: null, lng: null });
+    setSubmitted(false);
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSubmitted(true);
+    if (name.trim().length < 2 || !phoneValid || location.address.trim().length < 2) {
+      return;
+    }
     setStatus("sending");
-
     try {
       const response = await fetch("/api/send-telegram", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          ...formData,
+          name,
+          phone,
+          location: location.address,
+          lat: location.lat,
+          lng: location.lng,
           craneModel,
         }),
       });
-
       if (response.ok) {
         setStatus("success");
-        setFormData({ name: "", phone: "", location: "" });
+        reset();
         setTimeout(() => {
           setStatus("idle");
           onClose();
@@ -55,45 +87,44 @@ export const BookingModal = ({ isOpen, onClose, craneModel }: BookingModalProps)
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-6">
-          {/* Backdrop */}
+        <div className="fixed inset-0 z-[100] flex items-start sm:items-center justify-center p-3 sm:p-6 overflow-y-auto">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+            className="fixed inset-0 bg-black/80 backdrop-blur-sm"
           />
 
-          {/* Modal Content */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            className="relative w-full max-w-xl bg-brand-surface border border-brand-primary/20 rounded-3xl overflow-hidden shadow-2xl"
+            exit={{ opacity: 0, scale: 0.95, y: 20 }}
+            className="relative w-full max-w-xl bg-brand-surface border border-brand-primary/20 rounded-3xl shadow-2xl my-4 max-h-[94vh] overflow-y-auto"
           >
-            <div className="absolute top-0 left-0 w-full h-2 bg-brand-primary" />
-            
-            <button
-              onClick={onClose}
-              type="button"
-              className="absolute top-6 right-6 p-2 rounded-full bg-foreground/5 hover:bg-brand-primary hover:text-black transition-all"
-            >
-              <X size={20} />
-            </button>
-
-            <div className="p-8 md:p-10">
-              <div className="mb-8">
-                <h2 className="text-3xl font-black text-foreground mb-2 tracking-tight">
-                  {t('title')}
+            <div className="sticky top-0 z-10 bg-brand-surface/95 backdrop-blur border-b border-brand-primary/10 px-6 sm:px-8 py-5 flex items-start justify-between gap-4">
+              <div>
+                <h2 className="text-2xl font-black text-foreground tracking-tight">
+                  {t("title")}
                 </h2>
-                <p className="text-foreground/60 font-medium">
+                <p className="text-foreground/60 text-sm mt-0.5">
                   {craneModel ? (
                     <span className="text-brand-primary font-bold">{craneModel}</span>
-                  ) : t('description')}
+                  ) : (
+                    t("description")
+                  )}
                 </p>
               </div>
+              <button
+                onClick={onClose}
+                type="button"
+                className="p-2 rounded-full bg-foreground/5 hover:bg-brand-primary hover:text-black transition-all flex-shrink-0"
+              >
+                <X size={18} />
+              </button>
+            </div>
 
+            <div className="p-6 sm:p-8">
               {status === "success" ? (
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
@@ -103,81 +134,83 @@ export const BookingModal = ({ isOpen, onClose, craneModel }: BookingModalProps)
                   <div className="w-20 h-20 bg-green-500/20 text-green-500 rounded-full flex items-center justify-center mb-6">
                     <CheckCircle size={48} />
                   </div>
-                  <h3 className="text-2xl font-bold mb-2">{t('success')}</h3>
+                  <h3 className="text-2xl font-bold mb-2">{t("success")}</h3>
+                  <p className="text-foreground/50 text-sm">{t("successNote")}</p>
                 </motion.div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-5">
+                  {/* Name */}
                   <div className="space-y-2">
-                    <label className="text-sm font-bold uppercase tracking-widest text-foreground/40 px-1">
-                      {t('nameLabel')}
+                    <label className="text-xs font-bold uppercase tracking-widest text-foreground/40 px-1">
+                      {t("nameLabel")}
                     </label>
                     <div className="relative">
-                      <User className="absolute left-4 top-1/2 -translate-y-1/2 text-foreground/20" size={20} />
+                      <User
+                        className="absolute left-4 top-1/2 -translate-y-1/2 text-foreground/20"
+                        size={20}
+                      />
                       <input
-                        required
                         type="text"
-                        placeholder={t('namePlaceholder')}
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full bg-foreground/5 border border-foreground/10 rounded-2xl py-4 pl-12 pr-6 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary outline-none transition-all font-medium text-foreground"
+                        placeholder={t("namePlaceholder")}
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        className={`w-full bg-foreground/5 border rounded-2xl py-4 pl-12 pr-6 outline-none transition-all font-medium text-foreground ${
+                          submitted && name.trim().length < 2
+                            ? "border-red-500/60"
+                            : "border-foreground/10 focus:border-brand-primary"
+                        }`}
                       />
                     </div>
                   </div>
 
+                  {/* Phone */}
                   <div className="space-y-2">
-                    <label className="text-sm font-bold uppercase tracking-widest text-foreground/40 px-1">
-                      {t('phoneLabel')}
+                    <label className="text-xs font-bold uppercase tracking-widest text-foreground/40 px-1">
+                      {t("phoneLabel")}
                     </label>
-                    <div className="relative">
-                      <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-foreground/20" size={20} />
-                      <input
-                        required
-                        type="tel"
-                        placeholder={t('phonePlaceholder')}
-                        value={formData.phone}
-                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className="w-full bg-foreground/5 border border-foreground/10 rounded-2xl py-4 pl-12 pr-6 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary outline-none transition-all font-medium text-foreground"
-                      />
-                    </div>
+                    <PhoneInput
+                      onChange={(full, valid) => {
+                        setPhone(full);
+                        setPhoneValid(valid);
+                      }}
+                      showError={submitted}
+                      errorText={t("phoneInvalid")}
+                    />
                   </div>
 
+                  {/* Location */}
                   <div className="space-y-2">
-                    <label className="text-sm font-bold uppercase tracking-widest text-foreground/40 px-1">
-                      {t('locationLabel')}
+                    <label className="text-xs font-bold uppercase tracking-widest text-foreground/40 px-1">
+                      {t("locationLabel")}
                     </label>
-                    <div className="relative">
-                      <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 text-foreground/20" size={20} />
-                      <input
-                        required
-                        type="text"
-                        placeholder={t('locationPlaceholder')}
-                        value={formData.location}
-                        onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-                        className="w-full bg-foreground/5 border border-foreground/10 rounded-2xl py-4 pl-12 pr-6 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary outline-none transition-all font-medium text-foreground"
-                      />
-                    </div>
+                    <LocationPicker onChange={setLocation} />
+                    {submitted && location.address.trim().length < 2 && (
+                      <p className="text-red-500 text-xs px-1 font-medium">
+                        {t("locationRequired")}
+                      </p>
+                    )}
                   </div>
 
                   {status === "error" && (
                     <div className="flex items-center gap-2 text-red-500 bg-red-500/10 p-4 rounded-xl border border-red-500/20">
                       <AlertCircle size={20} />
-                      <p className="text-sm font-medium">{t('error')}</p>
+                      <p className="text-sm font-medium">{t("error")}</p>
                     </div>
                   )}
 
                   <button
                     disabled={status === "sending"}
                     type="submit"
-                    className="w-full bg-brand-primary hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black text-black py-5 rounded-2xl font-black text-lg transition-all flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed mt-4 shadow-xl shadow-brand-primary/20"
+                    className="w-full bg-brand-primary hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black text-black py-4 sm:py-5 rounded-2xl font-black text-lg transition-all flex items-center justify-center gap-3 disabled:opacity-50 shadow-xl shadow-brand-primary/20"
                   >
                     {status === "sending" ? (
                       <>
-                        <div className="w-5 h-5 border-2 border-current border-t-transparent rounded-full animate-spin" />
-                        {t('sending')}
+                        <Loader2 className="animate-spin" size={20} />
+                        {t("sending")}
                       </>
                     ) : (
                       <>
-                        {t('submit')}
+                        {t("submit")}
                         <Send size={20} />
                       </>
                     )}

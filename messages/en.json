@@ -314,7 +314,10 @@
     "submit": "SUBMIT",
     "sending": "SENDING...",
     "success": "Your details have been sent successfully!",
-    "error": "An error occurred. Please try again."
+    "error": "An error occurred. Please try again.",
+    "phoneInvalid": "Enter a complete phone number",
+    "locationRequired": "Select or enter an address",
+    "successNote": "Our operators will contact you shortly."
   },
   "Contact": {
     "title": "Contact Us",
@@ -405,5 +408,10 @@
         "a": "Cash and bank transfer. Official contracts are signed for legal entities."
       }
     ]
+  },
+  "Location": {
+    "hint": "Mark on the map or type the address",
+    "myLocation": "My location",
+    "addressPlaceholder": "Address (auto-filled or type it)"
   }
 }

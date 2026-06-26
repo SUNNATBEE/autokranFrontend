@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Send, Phone, User, CheckCircle, AlertCircle } from "lucide-react";
+import { X, Send, User, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { PhoneInput } from "./PhoneInput";
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -12,28 +13,32 @@ interface ContactModalProps {
 
 export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
   const t = useTranslations("Contact");
-  const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-  });
+  const tb = useTranslations("Booking");
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [phoneValid, setPhoneValid] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSubmitted(true);
+    if (name.trim().length < 2 || !phoneValid) return;
     setStatus("sending");
 
     try {
       const response = await fetch("/api/contacts", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, phone }),
       });
 
       if (response.ok) {
         setStatus("success");
-        setFormData({ name: "", phone: "" });
+        setName("");
+        setPhone("");
+        setPhoneValid(false);
+        setSubmitted(false);
         setTimeout(() => {
           setStatus("idle");
           onClose();
@@ -101,37 +106,37 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="space-y-2">
-                    <label className="text-sm font-bold uppercase tracking-widest text-foreground/40 px-1">
+                    <label className="text-xs font-bold uppercase tracking-widest text-foreground/40 px-1">
                       {t('nameLabel')}
                     </label>
                     <div className="relative">
                       <User className="absolute left-4 top-1/2 -translate-y-1/2 text-foreground/20" size={20} />
                       <input
-                        required
                         type="text"
                         placeholder={t('namePlaceholder')}
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full bg-foreground/5 border border-foreground/10 rounded-2xl py-4 pl-12 pr-6 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary outline-none transition-all font-medium text-foreground"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        className={`w-full bg-foreground/5 border rounded-2xl py-4 pl-12 pr-6 outline-none transition-all font-medium text-foreground ${
+                          submitted && name.trim().length < 2
+                            ? "border-red-500/60"
+                            : "border-foreground/10 focus:border-brand-primary"
+                        }`}
                       />
                     </div>
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-sm font-bold uppercase tracking-widest text-foreground/40 px-1">
+                    <label className="text-xs font-bold uppercase tracking-widest text-foreground/40 px-1">
                       {t('phoneLabel')}
                     </label>
-                    <div className="relative">
-                      <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-foreground/20" size={20} />
-                      <input
-                        required
-                        type="tel"
-                        placeholder={t('phonePlaceholder')}
-                        value={formData.phone}
-                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className="w-full bg-foreground/5 border border-foreground/10 rounded-2xl py-4 pl-12 pr-6 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary outline-none transition-all font-medium text-foreground"
-                      />
-                    </div>
+                    <PhoneInput
+                      onChange={(full, valid) => {
+                        setPhone(full);
+                        setPhoneValid(valid);
+                      }}
+                      showError={submitted}
+                      errorText={tb('phoneInvalid')}
+                    />
                   </div>
 
                   {status === "error" && (
@@ -148,7 +153,7 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
                   >
                     {status === "sending" ? (
                       <>
-                        <div className="w-5 h-5 border-2 border-current border-t-transparent rounded-full animate-spin" />
+                        <Loader2 className="animate-spin" size={20} />
                         {t('sending')}
                       </>
                     ) : (

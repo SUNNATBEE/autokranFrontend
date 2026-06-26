@@ -314,7 +314,10 @@
     "submit": "YUBORISH",
     "sending": "YUBORILMOQDA...",
     "success": "Xabaringiz yuborildi! Tez orada siz bilan bog'lanamiz.",
-    "error": "Xatolik yuz berdi. Iltimos qaytadan urinib ko'ring."
+    "error": "Xatolik yuz berdi. Iltimos qaytadan urinib ko'ring.",
+    "phoneInvalid": "To'liq telefon raqamini kiriting",
+    "locationRequired": "Manzilni tanlang yoki kiriting",
+    "successNote": "Tez orada operatorlarimiz siz bilan bog'lanadi."
   },
   "Contact": {
     "title": "Biz bilan bog'lanish",
@@ -405,5 +408,10 @@
         "a": "Naqd va bank o'tkazmasi orqali. Yuridik shaxslar uchun rasmiy shartnoma tuziladi."
       }
     ]
+  },
+  "Location": {
+    "hint": "Xaritadan belgilang yoki manzilni yozing",
+    "myLocation": "Joriy joylashuvim",
+    "addressPlaceholder": "Manzil (avtomatik chiqadi yoki yozing)"
   }
 }
