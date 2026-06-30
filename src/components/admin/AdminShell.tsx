@@ -31,7 +31,10 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
   const t = useTranslations('Admin.shell');
   const pathname = usePathname();
   const router = useRouter();
-  const [isSidebarOpen, setSidebarOpen] = useState(true);
+  // Closed by default on mobile (the `md:` classes keep it permanently visible
+  // on desktop regardless of this state). Prevents the sidebar from covering
+  // the content on first paint on phones.
+  const [isSidebarOpen, setSidebarOpen] = useState(false);
   const [session, setSession] = useState<AdminSession | null>(null);
   const [checking, setChecking] = useState(true);
 
@@ -155,8 +158,18 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
         }}
       />
 
+      {/* Mobile backdrop — tap to dismiss the slide-over sidebar. */}
+      {isSidebarOpen && (
+        <button
+          type="button"
+          aria-label={t('closeMenu')}
+          onClick={() => setSidebarOpen(false)}
+          className="md:hidden fixed inset-0 z-10 bg-black/60 backdrop-blur-sm"
+        />
+      )}
+
       <aside
-        className={`glass border-r border-brand-primary/10 w-64 flex-shrink-0 transition-transform duration-300 relative z-20 ${
+        className={`glass max-md:bg-background border-r border-brand-primary/10 w-72 max-w-[85vw] md:w-64 flex-shrink-0 transition-transform duration-300 relative z-20 ${
           isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
         } fixed inset-y-0 left-0 md:relative md:translate-x-0 flex flex-col`}
       >
@@ -190,6 +203,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
               <Link
                 key={item.nameKey}
                 href={item.href}
+                onClick={() => setSidebarOpen(false)}
                 className={`flex items-center gap-3 px-4 py-3 rounded-xl font-semibold text-sm transition-all ${
                   isActive
                     ? 'bg-brand-primary text-black shadow-lg shadow-brand-primary/20'

@@ -119,7 +119,8 @@
         "sponsors": "Hamkorlar",
         "media": "Media",
         "overview": "Umumiy ko'rinish"
-      }
+      },
+      "closeMenu": "Menyuni yopish"
     },
     "orders": {
       "badge": "Buyurtma menejeri",

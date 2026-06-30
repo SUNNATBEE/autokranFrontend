@@ -36,7 +36,7 @@ function FooterContent() {
 
   return (
     <>
-      <footer className="bg-background pt-24 pb-12 overflow-hidden border-t border-brand-primary/10">
+      <footer className="bg-background pt-24 pb-28 md:pb-32 overflow-hidden border-t border-brand-primary/10">
         <div className="container mx-auto px-6 relative z-10">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 mb-20">
             <div>

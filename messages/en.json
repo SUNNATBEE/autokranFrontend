@@ -119,7 +119,8 @@
         "sponsors": "Sponsors",
         "media": "Media",
         "overview": "Overview"
-      }
+      },
+      "closeMenu": "Close menu"
     },
     "orders": {
       "badge": "Order Manager",
