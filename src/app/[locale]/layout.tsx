@@ -1,4 +1,4 @@
-import type { Metadata, Viewport } from "next";
+import { Metadata, Viewport } from "next";
 import { Inter, Montserrat } from "next/font/google";
 import "../globals.css";
 import { siteConfig, companyInfo, verification } from "@/constants";
@@ -111,10 +111,10 @@ export async function generateMetadata({
       icon: [{ url: "/favicon.svg", type: "image/svg+xml" }, { url: "/favicon.ico" }],
       shortcut: "/favicon.ico",
     },
-    // Ownership verification for Search Console / Webmaster (set via env).
-    // Empty values are omitted automatically.
+    // Ownership verification for Search Console / Webmaster
     verification: {
-      ...(verification.google ? { google: verification.google } : {}),
+      // Google kaliti to'g'ridan-to'g'ri shu yerga yozildi:
+      google: "j1hfo-Zn7gseZdMQjYYVO-dPkDrqYbqKzoNE1VFMtN0",
       ...(verification.yandex ? { yandex: verification.yandex } : {}),
       ...(verification.bing
         ? { other: { "msvalidate.01": verification.bing } }
