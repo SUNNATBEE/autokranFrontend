@@ -78,9 +78,9 @@ function FooterContent() {
             </div>
 
             <div>
-              <h4 className="text-xl font-black text-foreground mb-8">
+              <h3 className="text-xl font-black text-foreground mb-8">
                 {t("links")}
-              </h4>
+              </h3>
               <ul className="space-y-4">
                 <li>
                   <a
@@ -118,9 +118,9 @@ function FooterContent() {
             </div>
 
             <div>
-              <h4 className="text-xl font-black text-foreground mb-8">
+              <h3 className="text-xl font-black text-foreground mb-8">
                 {t("contact")}
-              </h4>
+              </h3>
               <ul className="space-y-6">
                 <li className="flex items-start gap-4">
                   <div className="p-3 bg-brand-surface rounded-xl border border-brand-primary/5">

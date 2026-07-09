@@ -62,7 +62,7 @@ export const Projects = ({ craneCount }: { craneCount: number }) => {
         {/* Project gallery */}
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {projectShowcase.map((p, idx) => (
-            <motion.div
+            <motion.figure
               key={p.name}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -78,12 +78,12 @@ export const Projects = ({ craneCount }: { craneCount: number }) => {
                 className="object-cover transition-transform duration-700 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-              <div className="absolute bottom-0 left-0 p-5">
+              <figcaption className="absolute bottom-0 left-0 p-5">
                 <span className="text-white font-black text-lg md:text-xl tracking-tight drop-shadow-lg">
                   {p.name}
                 </span>
-              </div>
-            </motion.div>
+              </figcaption>
+            </motion.figure>
           ))}
         </div>
       </div>

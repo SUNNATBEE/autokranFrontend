@@ -28,7 +28,7 @@ export const Reviews = () => {
 
         <div className="grid md:grid-cols-3 gap-6">
           {items.map((r, idx) => (
-            <motion.div
+            <motion.article
               key={r.name}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -58,7 +58,7 @@ export const Reviews = () => {
                   <p className="text-xs text-foreground/50">{r.company}</p>
                 </div>
               </div>
-            </motion.div>
+            </motion.article>
           ))}
         </div>
       </div>

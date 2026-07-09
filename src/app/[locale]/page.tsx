@@ -143,8 +143,10 @@ export default async function Home({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <main className="min-h-screen bg-background text-foreground selection:bg-brand-primary selection:text-black">
+      <header>
         <Navbar />
+      </header>
+      <main className="min-h-screen bg-background text-foreground selection:bg-brand-primary selection:text-black">
         <Hero />
         <About />
         <Calculator cranes={cranes} />
@@ -153,9 +155,9 @@ export default async function Home({
         <Reviews />
         <Faq />
         <Partners />
-        <Footer />
-        <FloatingContact />
       </main>
+      <Footer />
+      <FloatingContact />
     </>
   );
 }

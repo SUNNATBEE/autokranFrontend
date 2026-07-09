@@ -32,7 +32,7 @@ export const Faq = () => {
             {items.map((item, idx) => {
               const isOpen = open === idx;
               return (
-                <div
+                <article
                   key={idx}
                   className="bg-background border border-brand-primary/10 rounded-2xl overflow-hidden"
                 >
@@ -66,7 +66,7 @@ export const Faq = () => {
                       </motion.div>
                     )}
                   </AnimatePresence>
-                </div>
+                </article>
               );
             })}
           </div>

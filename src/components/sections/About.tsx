@@ -20,7 +20,7 @@ export const About = () => {
                   })}
                </h3>
                <div className="space-y-8 md:space-y-12">
-                 <div className="flex gap-6 group/item">
+                 <article className="flex gap-6 group/item">
                     <div className="w-14 h-14 bg-brand-primary rounded-2xl flex items-center justify-center shrink-0 group-hover/item:rotate-6 transition-transform">
                        <span className="text-black font-black text-2xl tracking-tighter">01</span>
                     </div>
@@ -28,8 +28,8 @@ export const About = () => {
                        <h4 className="text-xl font-black text-foreground mb-2 group-hover/item:text-brand-primary transition-colors uppercase">{t('features.f1.title')}</h4>
                        <p className="text-foreground/50 font-medium leading-relaxed">{t('features.f1.desc')}</p>
                     </div>
-                 </div>
-                 <div className="flex gap-6 group/item">
+                 </article>
+                 <article className="flex gap-6 group/item">
                     <div className="w-14 h-14 bg-brand-primary rounded-2xl flex items-center justify-center shrink-0 group-hover/item:rotate-6 transition-transform">
                        <span className="text-black font-black text-2xl tracking-tighter">02</span>
                     </div>
@@ -37,8 +37,8 @@ export const About = () => {
                        <h4 className="text-xl font-black text-foreground mb-2 group-hover/item:text-brand-primary transition-colors uppercase">{t('features.f2.title')}</h4>
                        <p className="text-foreground/50 font-medium leading-relaxed">{t('features.f2.desc')}</p>
                     </div>
-                 </div>
-                 <div className="flex gap-6 group/item">
+                 </article>
+                 <article className="flex gap-6 group/item">
                     <div className="w-14 h-14 bg-brand-primary rounded-2xl flex items-center justify-center shrink-0 group-hover/item:rotate-6 transition-transform">
                        <span className="text-black font-black text-2xl tracking-tighter">03</span>
                     </div>
@@ -46,7 +46,7 @@ export const About = () => {
                        <h4 className="text-xl font-black text-foreground mb-2 group-hover/item:text-brand-primary transition-colors uppercase">{t('features.f3.title')}</h4>
                        <p className="text-foreground/50 font-medium leading-relaxed">{t('features.f3.desc')}</p>
                     </div>
-                 </div>
+                 </article>
                </div>
             </div>
          </div>
