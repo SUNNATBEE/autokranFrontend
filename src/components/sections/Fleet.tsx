@@ -53,7 +53,7 @@ export const Fleet = ({ cranes }: { cranes: FleetCrane[] }) => {
             const finalPrice = discountedPrice(crane);
             const hasDiscount = crane.discountPercent > 0 && crane.pricePerMonth != null;
             return (
-            <motion.div
+            <motion.article
               key={crane.id}
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -102,6 +102,7 @@ export const Fleet = ({ cranes }: { cranes: FleetCrane[] }) => {
               </div>
 
               <div className="flex flex-col gap-4">
+
                  <div className="py-3 px-4 bg-brand-surface rounded-xl border border-brand-primary/10">
                    {finalPrice != null ? (
                      <div className="flex flex-col items-center text-center">
@@ -132,7 +133,7 @@ export const Fleet = ({ cranes }: { cranes: FleetCrane[] }) => {
                      <MoveRight size={20} className="group-hover/btn:translate-x-2 transition-transform" />
                   </button>
                </div>
-            </motion.div>
+            </motion.article>
             );
           })}
         </div>
