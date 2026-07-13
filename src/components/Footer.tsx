@@ -6,6 +6,7 @@ import { companyInfo } from "@/constants";
 import { useTranslations } from "next-intl";
 import { useSearchParams } from "next/navigation";
 import { AdminLoginModal } from "@/components/admin/AdminLoginModal";
+import { Link } from "@/i18n/routing";
 
 function FooterContent() {
   const t = useTranslations("Footer");
@@ -85,36 +86,44 @@ function FooterContent() {
               </h3>
               <ul className="space-y-4">
                 <li>
-                  <a
-                    href="#about"
+                  <Link
+                    href="/"
+                    className="text-foreground/60 hover:text-brand-primary transition-colors"
+                  >
+                    {navT("home")}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/about"
                     className="text-foreground/60 hover:text-brand-primary transition-colors"
                   >
                     {navT("about")}
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="#fleet"
+                  <Link
+                    href="/fleet"
                     className="text-foreground/60 hover:text-brand-primary transition-colors"
                   >
                     {navT("fleet")}
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="#partners"
-                    className="text-foreground/60 hover:text-brand-primary transition-colors"
-                  >
-                    {navT("partners")}
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#faq"
+                  <Link
+                    href="/faq"
                     className="text-foreground/60 hover:text-brand-primary transition-colors"
                   >
                     {t("faq")}
-                  </a>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/contact"
+                    className="text-foreground/60 hover:text-brand-primary transition-colors"
+                  >
+                    {t("contact")}
+                  </Link>
                 </li>
               </ul>
             </div>

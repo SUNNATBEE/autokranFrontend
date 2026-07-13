@@ -1,11 +1,12 @@
 "use client";
 
-import { Phone, Menu, X } from "lucide-react";
+import { Phone, Menu, X, Home } from "lucide-react";
 import { useState, useEffect } from "react";
 import { companyInfo } from "@/constants";
 import { ThemeToggle } from "./ThemeToggle";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/routing";
 
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -32,10 +33,15 @@ export const Navbar = () => {
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-6">
-          <a href="#fleet" className="text-sm font-medium hover:text-brand-primary transition-colors">{t('fleet')}</a>
+          <Link href="/" className="text-sm font-medium hover:text-brand-primary transition-colors flex items-center gap-1.5">
+            <Home size={16} />
+            {t('home')}
+          </Link>
+          <Link href="/about" className="text-sm font-medium hover:text-brand-primary transition-colors">{t('about')}</Link>
+          <Link href="/fleet" className="text-sm font-medium hover:text-brand-primary transition-colors">{t('fleet')}</Link>
+          <Link href="/faq" className="text-sm font-medium hover:text-brand-primary transition-colors">{t('faq')}</Link>
           <a href="#calculator" className="text-sm font-medium hover:text-brand-primary transition-colors">{t('calculator')}</a>
           <a href="#projects" className="text-sm font-medium hover:text-brand-primary transition-colors">{t('projects')}</a>
-          <a href="#faq" className="text-sm font-medium hover:text-brand-primary transition-colors">{t('faq')}</a>
 
           <div className="h-6 w-[1px] bg-foreground/10 mx-2" />
           
@@ -64,10 +70,15 @@ export const Navbar = () => {
       {/* Mobile Menu: Fluid layout, transforms into full-width hamburger menu */}
       {isMenuOpen && (
         <div className="md:hidden absolute top-full left-0 right-0 bg-background/95 backdrop-blur-xl border-t border-brand-primary/10 p-6 flex flex-col gap-6 animate-in slide-in-from-top-4 duration-300 shadow-2xl">
-           <a href="#fleet" className="text-lg font-medium" onClick={() => setIsMenuOpen(false)}>{t('fleet')}</a>
+           <Link href="/" className="text-lg font-medium flex items-center gap-2" onClick={() => setIsMenuOpen(false)}>
+             <Home size={18} />
+             {t('home')}
+           </Link>
+           <Link href="/about" className="text-lg font-medium" onClick={() => setIsMenuOpen(false)}>{t('about')}</Link>
+           <Link href="/fleet" className="text-lg font-medium" onClick={() => setIsMenuOpen(false)}>{t('fleet')}</Link>
+           <Link href="/faq" className="text-lg font-medium" onClick={() => setIsMenuOpen(false)}>{t('faq')}</Link>
            <a href="#calculator" className="text-lg font-medium" onClick={() => setIsMenuOpen(false)}>{t('calculator')}</a>
            <a href="#projects" className="text-lg font-medium" onClick={() => setIsMenuOpen(false)}>{t('projects')}</a>
-           <a href="#faq" className="text-lg font-medium" onClick={() => setIsMenuOpen(false)}>{t('faq')}</a>
            <a 
             href={`tel:+998${companyInfo.phoneRaw}`}
             className="flex items-center justify-center gap-3 bg-brand-primary text-black p-4 rounded-xl font-bold shadow-lg shadow-brand-primary/20"
