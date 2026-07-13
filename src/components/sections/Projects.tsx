@@ -72,7 +72,7 @@ export const Projects = ({ craneCount }: { craneCount: number }) => {
             >
               <Image
                 src={p.image}
-                alt={p.name}
+                alt={`${p.name} — AUTOKRAN.UZ avtokran bilan amalga oshirilgan loyiha`}
                 fill
                 sizes="(max-width: 1024px) 50vw, 33vw"
                 className="object-cover transition-transform duration-700 group-hover:scale-110"
