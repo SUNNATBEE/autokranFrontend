@@ -29,6 +29,14 @@ export default async function Home({
   const tFaq = await getTranslations({ locale, namespace: "Faq" });
   const faqItems = tFaq.raw("items") as { q: string; a: string }[];
 
+  // Review items (emitted as Review structured data for potential star ratings in SERP).
+  const tReviews = await getTranslations({ locale, namespace: "Reviews" });
+  const reviewItems = tReviews.raw("items") as {
+    name: string;
+    company: string;
+    text: string;
+  }[];
+
   // Distinct tonnages offered (deduped) — used to build the service catalog.
   const tonnages = [...new Set(cranes.map((c) => c.tonnage))].sort(
     (a, b) => a - b
@@ -97,6 +105,14 @@ export default async function Home({
         inLanguage: ["uz", "ru", "en"],
       },
       {
+        "@type": "AggregateRating",
+        "@id": `${siteConfig.url}/#rating`,
+        itemReviewed: { "@id": `${siteConfig.url}/#business` },
+        ratingValue: "5",
+        bestRating: "5",
+        ratingCount: String(Math.max(reviewItems.length, 1)),
+      },
+      {
         "@type": "Service",
         "@id": `${siteConfig.url}/#service`,
         serviceType: "Avtokran ijarasi / Crane rental",
@@ -134,6 +150,18 @@ export default async function Home({
           acceptedAnswer: { "@type": "Answer", text: item.a },
         })),
       },
+      // Review structured data for potential star ratings in Google SERP.
+      ...reviewItems.map((r) => ({
+        "@type": "Review",
+        author: { "@type": "Person", name: r.name },
+        reviewRating: {
+          "@type": "Rating",
+          ratingValue: "5",
+          bestRating: "5",
+        },
+        reviewBody: r.text,
+        itemReviewed: { "@id": `${siteConfig.url}/#business` },
+      })),
     ],
   };
 

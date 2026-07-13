@@ -56,6 +56,7 @@ function FooterContent() {
                   href={telegramUrl}
                   target="_blank"
                   rel="noopener noreferrer"
+                  referrerPolicy="no-referrer"
                   className="p-4 bg-brand-surface rounded-2xl hover:bg-brand-primary group transition-all border border-brand-primary/5"
                 >
                   <Send
@@ -67,6 +68,7 @@ function FooterContent() {
                   href={companyInfo.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
+                  referrerPolicy="no-referrer"
                   className="p-4 bg-brand-surface rounded-2xl hover:bg-brand-primary group transition-all border border-brand-primary/5"
                 >
                   <Globe

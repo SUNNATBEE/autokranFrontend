@@ -108,8 +108,7 @@ export async function generateMetadata({
       },
     },
     icons: {
-      icon: [{ url: "/favicon.svg", type: "image/svg+xml" }, { url: "/favicon.ico" }],
-      shortcut: "/favicon.ico",
+      icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
     },
     // Ownership verification for Search Console / Webmaster
     verification: {
