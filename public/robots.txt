@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+Disallow: /admin/
+Disallow: /uz/admin/
+Disallow: /ru/admin/
+Disallow: /en/admin/
+
+Sitemap: https://www.autokran.uz/sitemap.xml
