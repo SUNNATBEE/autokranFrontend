@@ -108,7 +108,11 @@ export async function generateMetadata({
       },
     },
     icons: {
-      icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
+      icon: [
+        { url: "/autokran-logo.jpg", type: "image/jpeg" },
+
+      ],
+      apple: [{ url: "/autokran-logo.jpg", sizes: "180x180", type: "image/jpeg" }],
     },
     // Ownership verification for Search Console / Webmaster
     verification: {

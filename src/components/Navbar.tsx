@@ -22,14 +22,16 @@ export const Navbar = () => {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-background/80 backdrop-blur-md py-3 md:py-4 shadow-lg border-b border-brand-primary/10" : "bg-transparent py-4 md:py-6"}`}>
       <div className="container mx-auto px-6 flex justify-between items-center">
-        <div className="flex items-center gap-2 group cursor-pointer">
-          <div className="w-10 h-10 bg-brand-primary rounded-lg flex items-center justify-center rotate-3 group-hover:rotate-0 transition-transform">
-             <span className="text-black font-black text-xl">A</span>
-          </div>
+        <Link href="/" className="flex items-center gap-3 group cursor-pointer">
+          <img
+            src="/autokran-logo.jpg"
+            alt="AUTOKRAN.UZ"
+            className="w-11 h-11 rounded-full object-cover ring-2 ring-brand-primary/20 group-hover:ring-brand-primary/50 transition-all duration-300 group-hover:scale-105"
+          />
           <span className="text-2xl font-black tracking-tighter text-foreground">
             AUTOKRAN<span className="text-brand-primary">.UZ</span>
           </span>
-        </div>
+        </Link>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-6">
