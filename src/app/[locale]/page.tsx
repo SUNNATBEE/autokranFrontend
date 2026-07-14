@@ -58,7 +58,7 @@ export default async function Home({
         telephone: companyInfo.phone,
         foundingDate: String(companyInfo.founded),
         image: siteConfig.ogImage,
-        logo: `${siteConfig.url}/favicon.svg`,
+        logo: `${siteConfig.url}/autokran-logo.jpg`,
         priceRange: siteConfig.priceRange,
         currenciesAccepted: "UZS",
         address: {

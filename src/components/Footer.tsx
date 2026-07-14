@@ -41,14 +41,16 @@ function FooterContent() {
         <div className="container mx-auto px-6 relative z-10">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 mb-20">
             <div>
-              <div className="flex items-center gap-2 mb-8 group cursor-pointer">
-                <div className="w-10 h-10 bg-brand-primary rounded-lg flex items-center justify-center rotate-3 group-hover:rotate-0 transition-transform">
-                  <span className="text-black font-black text-xl">A</span>
-                </div>
+              <Link href="/" className="flex items-center gap-3 mb-8 group cursor-pointer">
+                <img
+                  src="/autokran-logo.jpg"
+                  alt="AUTOKRAN.UZ"
+                  className="w-12 h-12 rounded-full object-cover ring-2 ring-brand-primary/20 group-hover:ring-brand-primary/50 transition-all duration-300 group-hover:scale-105"
+                />
                 <span className="text-2xl font-black tracking-tighter text-foreground">
                   AUTOKRAN<span className="text-brand-primary">.UZ</span>
                 </span>
-              </div>
+              </Link>
               <p className="text-foreground/60 leading-relaxed mb-8">
                 {t("description")}
               </p>

@@ -11,7 +11,7 @@ export default function manifest(): MetadataRoute.Manifest {
     background_color: "#121214",
     theme_color: "#facc15",
     icons: [
-      { src: "/favicon.svg", sizes: "any", type: "image/svg+xml" },
+      { src: "/autokran-logo.jpg", sizes: "any", type: "image/jpeg" },
     ],
   };
 }
