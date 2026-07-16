@@ -78,7 +78,7 @@ export const Hero = () => {
           <div className="absolute inset-0 bg-gradient-to-tr from-brand-primary/20 to-transparent blur-3xl rounded-full" />
           <Image
             src="/images/zoomlion_130t_new.png"
-            alt="AUTOKRAN.UZ — 130 tonnalik avtokran"
+            alt="AUTOKRAN.UZ — 130 tonnalik avtokran ijarasi, O'zbekistondagi eng kuchli yuk ko'tarish texnikasi"
             width={800}
             height={1000}
             priority

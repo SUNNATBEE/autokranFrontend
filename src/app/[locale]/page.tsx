@@ -42,9 +42,9 @@ export default async function Home({
     (a, b) => a - b
   );
 
-  // Structured data graph — LocalBusiness + WebSite + Service.
+  // Structured data graph — LocalBusiness + WebSite + Service + BreadcrumbList.
   // A connected @graph helps Google understand the entity and can produce a
-  // richer local-business / service result.
+  // richer local-business / service result with sitelinks in SERP.
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -53,11 +53,12 @@ export default async function Home({
         "@id": `${siteConfig.url}/#business`,
         name: companyInfo.shortName,
         legalName: companyInfo.name,
+        alternateName: "Avtokran ijarasi | AUTOKRAN.UZ",
         description: t("description"),
         url: `${siteConfig.url}/${locale}`,
         telephone: companyInfo.phone,
         foundingDate: String(companyInfo.founded),
-        image: siteConfig.ogImage,
+        image: [siteConfig.ogImage, `${siteConfig.url}/autokran-logo.jpg`],
         logo: `${siteConfig.url}/autokran-logo.jpg`,
         priceRange: siteConfig.priceRange,
         currenciesAccepted: "UZS",
@@ -93,16 +94,40 @@ export default async function Home({
           availableLanguage: ["uz", "ru", "en"],
         },
         sameAs: [companyInfo.telegram, companyInfo.instagram],
-        areaServed: { "@type": "Country", name: "Uzbekistan" },
+        areaServed: [
+          { "@type": "City", name: "Toshkent" },
+          { "@type": "Country", name: "Uzbekistan" },
+        ],
+        hasMap: `https://maps.google.com/?q=${siteConfig.geo.latitude},${siteConfig.geo.longitude}`,
+        keywords: t("keywords"),
       },
       {
         "@type": "WebSite",
         "@id": `${siteConfig.url}/#website`,
         url: siteConfig.url,
         name: companyInfo.shortName,
+        alternateName: "Avtokran ijarasi Toshkent",
         description: t("description"),
         publisher: { "@id": `${siteConfig.url}/#business` },
         inLanguage: ["uz", "ru", "en"],
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${siteConfig.url}/#breadcrumb`,
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Bosh sahifa",
+            item: `${siteConfig.url}/${locale}`,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Avtokran ijarasi",
+            item: `${siteConfig.url}/${locale}/fleet`,
+          },
+        ],
       },
       {
         "@type": "AggregateRating",
@@ -117,7 +142,10 @@ export default async function Home({
         "@id": `${siteConfig.url}/#service`,
         serviceType: "Avtokran ijarasi / Crane rental",
         provider: { "@id": `${siteConfig.url}/#business` },
-        areaServed: { "@type": "Country", name: "Uzbekistan" },
+        areaServed: [
+          { "@type": "City", name: "Toshkent" },
+          { "@type": "Country", name: "Uzbekistan" },
+        ],
         hasOfferCatalog: {
           "@type": "OfferCatalog",
           name: companyInfo.shortName,
