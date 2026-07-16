@@ -20,17 +20,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   );
 
   return {
-    title: `${t("title")} — Our Fleet`,
-    description: t("description"),
+    title: t("fleetTitle"),
+    description: t("fleetDescription"),
+    keywords: t("fleetKeywords"),
     alternates: {
       canonical: `${siteConfig.url}/${locale}/fleet`,
       languages: { ...languages, "x-default": `${siteConfig.url}/${routing.defaultLocale}/fleet` },
     },
     openGraph: {
-      title: `${t("title")} — Our Fleet`,
-      description: t("description"),
+      title: t("fleetTitle"),
+      description: t("fleetDescription"),
       url: `${siteConfig.url}/${locale}/fleet`,
-      images: [{ url: siteConfig.ogImage, width: 1200, height: 630 }],
+      images: [{ url: siteConfig.ogImage, width: 1200, height: 630, alt: t("ogAlt") }],
     },
   };
 }

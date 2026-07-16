@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { setRequestLocale, getTranslations } from "next-intl/server";
-import { siteConfig, companyInfo } from "@/constants";
+import { siteConfig } from "@/constants";
 import { routing } from "@/i18n/routing";
 import { Navbar } from "@/components/Navbar";
 import { About } from "@/components/sections/About";
@@ -19,17 +19,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   );
 
   return {
-    title: `${t("title")} — About Us`,
-    description: companyInfo.description,
+    title: t("aboutTitle"),
+    description: t("aboutDescription"),
+    keywords: t("aboutKeywords"),
     alternates: {
       canonical: `${siteConfig.url}/${locale}/about`,
       languages: { ...languages, "x-default": `${siteConfig.url}/${routing.defaultLocale}/about` },
     },
     openGraph: {
-      title: `${t("title")} — About Us`,
-      description: companyInfo.description,
+      title: t("aboutTitle"),
+      description: t("aboutDescription"),
       url: `${siteConfig.url}/${locale}/about`,
-      images: [{ url: siteConfig.ogImage, width: 1200, height: 630 }],
+      images: [{ url: siteConfig.ogImage, width: 1200, height: 630, alt: t("ogAlt") }],
     },
   };
 }

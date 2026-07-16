@@ -1,9 +1,21 @@
 {
   "Seo": {
-    "title": "AUTOKRAN.UZ — Avtokran ijarasi Toshkentda | 30–130 tonna",
-    "description": "O'zbekiston bo'ylab 30–130 tonnalik avtokran ijarasi. 24/7 xizmat, sertifikatlangan operatorlar. Arzon narxlar, tez yetkazib berish. Hozir buyurtma bering!",
-    "keywords": "avtokran, avtokran ijarasi, kran ijara, 30 tonna kran, 50 tonna kran, 80 tonna kran, 130 tonna kran, Toshkent kran xizmati, autokran uz",
-    "ogAlt": "AUTOKRAN.UZ — professional avtokran xizmatlari"
+    "title": "AUTOKRAN.UZ — Avtokran ijarasi Toshkent | Avtokran 30–130 tonna",
+    "description": "O'zbekistonda №1 avtokran ijarasi. 30–130 tonnalik zamonaviy avtokranlar, 24/7 xizmat, sertifikatlangan operatorlar. Eng yaxshi narx va tez yetkazib berish. AUTOKRAN.UZ bilan ishonchli hamkorlik! Hozir buyurtma bering.",
+    "keywords": "avtokran, avtokran ijarasi, autokran, kran ijara, 30 tonna avtokran, 50 tonna avtokran, 80 tonna avtokran, 130 tonna avtokran, Toshkent avtokran ijarasi, avtokran Toshkent, kran xizmati Toshkent, yuk ko'tarish krani, autokran uz, autokran.uz",
+    "ogAlt": "AUTOKRAN.UZ — O'zbekistonda №1 avtokran ijarasi xizmati",
+    "aboutTitle": "Kompaniya haqida | Avtokran ijarasi AUTOKRAN.UZ",
+    "aboutDescription": "AUTOKRAN.UZ — O'zbekistonda 2007 yildan beri avtokran ijarasi xizmati. 30–130 tonnalik zamonaviy avtokranlar, 500+ tugallangan loyiha, 20+ yillik tajriba. Biz haqimizda batafsil.",
+    "aboutKeywords": "avtokran ijarasi kompaniya, autokran uz haqida, kran ijarasi Toshkent, avtokran kompaniyasi, AUTOKRAN.UZ",
+    "contactTitle": "Aloqa | Avtokran ijarasi — AUTOKRAN.UZ",
+    "contactDescription": "AUTOKRAN.UZ bilan bog'laning! Avtokran ijarasi uchun +998 95 380 24 42. 24/7 xizmat, tez yetkazib berish. Toshkent va O'zbekiston bo'ylab.",
+    "contactKeywords": "avtokran ijarasi telefon, autokran uz aloqa, kran ijarasi Toshkent telefon, avtokran buyurtma, AUTOKRAN.UZ bog'lanish",
+    "faqTitle": "Savol-javoblar | Avtokran ijarasi — AUTOKRAN.UZ",
+    "faqDescription": "Avtokran ijarasi bo'yicha eng ko'p beriladigan savollarga javoblar. Narxlar, muddatlar, yetkazib berish va boshqa muhim ma'lumotlar. AUTOKRAN.UZ.",
+    "faqKeywords": "avtokran ijarasi savollar, kran ijarasi narxi, avtokran operator, autokran uz faq, avtokran tez-tez so'raladigan savollar",
+    "fleetTitle": "Avtokranlar | Avtopark — AUTOKRAN.UZ",
+    "fleetDescription": "AUTOKRAN.UZ avtoparkida 30, 50, 80 va 130 tonnalik zamonaviy avtokranlar. XCMG, ZOOMLION, SANY brendlari. Avtokran ijarasi uchun eng yaxshi tanlov!",
+    "fleetKeywords": "avtokran 30 tonna, avtokran 50 tonna, avtokran 80 tonna, avtokran 130 tonna, XCMG avtokran, ZOOMLION avtokran, SANY avtokran, kranlar Toshkent"
   },
   "Navbar": {
     "about": "Biz haqimizda",

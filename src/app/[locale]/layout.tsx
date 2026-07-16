@@ -67,6 +67,10 @@ export async function generateMetadata({
     authors: [{ name: companyInfo.name }],
     creator: companyInfo.name,
     publisher: companyInfo.name,
+    category: "avtokran ijarasi / crane rental",
+    classification: "Avtokran ijarasi xizmati",
+    referrer: "origin-when-cross-origin",
+    colorScheme: "dark light",
     alternates: {
       canonical: `${siteConfig.url}/${locale}`,
       languages: { ...languages, "x-default": `${siteConfig.url}/${routing.defaultLocale}` },
@@ -107,6 +111,12 @@ export async function generateMetadata({
         "max-video-preview": -1,
       },
     },
+    other: {
+      "geo.region": "UZ-TK",
+      "geo.placename": "Toshkent",
+      "geo.position": "41.2995;69.2401",
+      "ICBM": "41.2995, 69.2401",
+    },
     icons: {
       icon: [
         { url: "/autokran-logo.jpg", type: "image/jpeg" },
@@ -116,8 +126,8 @@ export async function generateMetadata({
     },
     // Ownership verification for Search Console / Webmaster
     verification: {
-      // Google kaliti to'g'ridan-to'g'ri shu yerga yozildi:
       google: "j1hfo-Zn7gseZdMQjYYVO-dPkDrqYbqKzoNE1VFMtN0",
+      yandex: "6729b6b9debf5d82",
       ...(verification.yandex ? { yandex: verification.yandex } : {}),
       ...(verification.bing
         ? { other: { "msvalidate.01": verification.bing } }

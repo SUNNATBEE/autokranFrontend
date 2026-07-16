@@ -18,17 +18,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   );
 
   return {
-    title: `${t("title")} — FAQ`,
-    description: t("description"),
+    title: t("faqTitle"),
+    description: t("faqDescription"),
+    keywords: t("faqKeywords"),
     alternates: {
       canonical: `${siteConfig.url}/${locale}/faq`,
       languages: { ...languages, "x-default": `${siteConfig.url}/${routing.defaultLocale}/faq` },
     },
     openGraph: {
-      title: `${t("title")} — FAQ`,
-      description: t("description"),
+      title: t("faqTitle"),
+      description: t("faqDescription"),
       url: `${siteConfig.url}/${locale}/faq`,
-      images: [{ url: siteConfig.ogImage, width: 1200, height: 630 }],
+      images: [{ url: siteConfig.ogImage, width: 1200, height: 630, alt: t("ogAlt") }],
     },
   };
 }

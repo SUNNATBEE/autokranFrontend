@@ -3,7 +3,7 @@ import { siteConfig } from "@/constants";
 import { routing } from "@/i18n/routing";
 
 /* ================================================================== */
-/*  SEO-OPTIMIZED SITEMAP — v3                                        */
+/*  SEO-OPTIMIZED SITEMAP — v4 (autokran keyword focused)              */
 /* ================================================================== */
 
 /* ------------------------------------------------------------------ */
@@ -40,7 +40,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   for (const locale of routing.locales) {
     const isDefault = locale === routing.defaultLocale;
 
-    // 1. Homepage
+    // 1. Homepage — highest priority, daily updates
     entries.push({
       url: `${siteConfig.url}/${locale}`,
       lastModified: nowISO,
@@ -49,16 +49,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       alternates: alternatesFor(""),
     });
 
-    // 2. About
-    entries.push({
-      url: `${siteConfig.url}/${locale}/about`,
-      lastModified: nowISO,
-      changeFrequency: "monthly" as const,
-      priority: prio(isDefault, 0.8),
-      alternates: alternatesFor("/about"),
-    });
-
-    // 3. Fleet
+    // 2. Fleet / Avtopark — weekly updates, high priority
     entries.push({
       url: `${siteConfig.url}/${locale}/fleet`,
       lastModified: nowISO,
@@ -67,22 +58,31 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       alternates: alternatesFor("/fleet"),
     });
 
-    // 4. FAQ
+    // 3. About — monthly
     entries.push({
-      url: `${siteConfig.url}/${locale}/faq`,
+      url: `${siteConfig.url}/${locale}/about`,
       lastModified: nowISO,
       changeFrequency: "monthly" as const,
-      priority: prio(isDefault, 0.7),
-      alternates: alternatesFor("/faq"),
+      priority: prio(isDefault, 0.8),
+      alternates: alternatesFor("/about"),
     });
 
-    // 5. Contact
+    // 4. Contact — monthly
     entries.push({
       url: `${siteConfig.url}/${locale}/contact`,
       lastModified: nowISO,
       changeFrequency: "monthly" as const,
       priority: prio(isDefault, 0.8),
       alternates: alternatesFor("/contact"),
+    });
+
+    // 5. FAQ — monthly
+    entries.push({
+      url: `${siteConfig.url}/${locale}/faq`,
+      lastModified: nowISO,
+      changeFrequency: "monthly" as const,
+      priority: prio(isDefault, 0.7),
+      alternates: alternatesFor("/faq"),
     });
   }
 
