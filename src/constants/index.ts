@@ -224,7 +224,7 @@ export const projectShowcase = [
 /** Canonical, env-overridable production URL (no trailing slash). */
 export const SITE_URL = (
   process.env.NEXT_PUBLIC_SITE_URL || "https://www.autokran.uz"
-).replace(/\/$/, "");
+).replace(/\/$/, "").replace(/\/(uz|ru|en)$/i, "");
 
 /**
  * Search-engine ownership-verification tokens.
